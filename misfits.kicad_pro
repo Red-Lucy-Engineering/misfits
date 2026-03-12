@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.1524,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.5
+          "min_clearance": 0.2
         }
       },
       "diff_pair_dimensions": [
@@ -60,11 +60,39 @@
       ],
       "drc_exclusions": [
         [
+          "clearance|149210000|100160000|34a364d1-299e-46e2-b920-72b536ff25cc|4cb7bbeb-ee3d-4a8d-9186-81635c29c9c2",
+          ""
+        ],
+        [
+          "clearance|164615000|101370000|5bb63f5d-4976-4d67-9a06-8a5e98be91ca|e2da53cc-4581-4cd7-b121-d7e6d445c033",
+          ""
+        ],
+        [
+          "hole_clearance|165115000|101370000|5bb63f5d-4976-4d67-9a06-8a5e98be91ca|e2da53cc-4581-4cd7-b121-d7e6d445c033",
+          ""
+        ],
+        [
+          "lib_footprint_mismatch|135420000|93827500|4f85c193-2669-4289-a092-9f67f81e818b|00000000-0000-0000-0000-000000000000",
+          ""
+        ],
+        [
           "shorting_items|149210000|100660000|27e39100-8838-48ad-bc30-4b1c0b52bd8a|34a364d1-299e-46e2-b920-72b536ff25cc",
           ""
         ],
         [
           "shorting_items|149710000|100660000|602365ed-edc9-4780-abce-f455773aaa11|98ba8a04-2429-41c2-9638-f58d979974f9",
+          ""
+        ],
+        [
+          "silk_edge_clearance|145510000|109500000|47d99288-c403-4713-959c-3171f8f4a188|f7a58865-5a83-4db9-88c6-fccd9ccc1bc7",
+          ""
+        ],
+        [
+          "silk_edge_clearance|154450000|109500000|47d99288-c403-4713-959c-3171f8f4a188|768d20e5-1b1c-4946-8871-7613a4bd5c8b",
+          ""
+        ],
+        [
+          "solder_mask_bridge|164615000|101370000|e2da53cc-4581-4cd7-b121-d7e6d445c033|5bb63f5d-4976-4d67-9a06-8a5e98be91ca",
           ""
         ]
       ],
