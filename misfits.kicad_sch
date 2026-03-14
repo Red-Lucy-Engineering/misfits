@@ -6,8 +6,8 @@
 	(paper "A4")
 	(title_block
 		(title "\"Misfits\"")
-		(date "2026-02-14")
-		(rev "1")
+		(date "2026-03-14")
+		(rev "2")
 		(company "Red lucy")
 		(comment 1 "redlucy404.de")
 	)
@@ -6957,13 +6957,14 @@
 					(justify left bottom)
 				)
 			)
-			(property "Value" "RC0603FR-07200KL"
-				(at -3.1242 -8.7376 0)
+			(property "Value" "200K Ohms"
+				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(justify left bottom)
+					(justify bottom)
+					(hide yes)
 				)
 			)
 			(property "Footprint" "RC0603FR-07200KL:RESC1608X60N"
@@ -7035,16 +7036,6 @@
 				)
 			)
 			(property "WATTAGE" "1/10 W"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "VALUE" "200K Ohms"
 				(at 0 0 0)
 				(effects
 					(font
@@ -7874,12 +7865,13 @@
 					(hide yes)
 				)
 			)
-			(property "Description" ""
+			(property "Description" "Connector Header Through Hole, Right Angle 2 position"
 				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify bottom)
 					(hide yes)
 				)
 			)
@@ -8003,16 +7995,6 @@
 					(hide yes)
 				)
 			)
-			(property "DESCRIPTION" "Connector Header Through Hole, Right Angle 2 position"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
 			(symbol "S2B-PH-K-S_LF__SN__0_0"
 				(rectangle
 					(start -5.08 -5.08)
@@ -8080,13 +8062,14 @@
 					(justify left bottom)
 				)
 			)
-			(property "Value" "SMD-RES-2K-1_-1_10W_0603_"
-				(at -3.81 -2.54 0)
+			(property "Value" "2K"
+				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(justify left bottom)
+					(justify bottom)
+					(hide yes)
 				)
 			)
 			(property "Footprint" "SMD-RES-2K-1_-1_10W_0603_:R0603"
@@ -8158,16 +8141,6 @@
 				)
 			)
 			(property "Price" "None"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify bottom)
-					(hide yes)
-				)
-			)
-			(property "VALUE" "2K"
 				(at 0 0 0)
 				(effects
 					(font
