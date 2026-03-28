@@ -1,14 +1,11 @@
-#include "esp-log.h"
+#ifndef _WATCH_TIMER_H
+#define _WATCH_TIMER_H
+
+
+#include "esp_log.h"
 #include "common-defs.h"
 #include "driver/gptimer.h"
 
-gptimer_handle_t gptimer = NULL;
-
-gptimer_config_t timer_config = {
-	.clk_src = GPTIMER_CLK_SRC_DEFAULT,
-	.direction = GPTIMER_COUNT_UP,
-	.resolution = 1 * 1000 * 1000, // 1MHz (1 tick = 1 ms)
-};
 
 static bool perminute_timer_on_alarm_cb(gptimer_handle_t timer,
 					const gptimer_alarm_event_data_t *edata,
@@ -25,3 +22,5 @@ static bool perminute_timer_on_alarm_cb(gptimer_handle_t timer,
 	 *    Reference: https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/peripherals/gptimer.html#triggering-periodic-alarm-events
 	 */
 }
+
+#endif //_WATCH_TIMER_H

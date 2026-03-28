@@ -1,3 +1,6 @@
+#ifndef _EPD_SPI_H
+#define _EPD_SPI_H
+
 #include "driver/gpio.h"
 #include "driver/spi_master.h"
 #include "esp_log.h"
@@ -30,9 +33,12 @@
 // 4MHz
 #define EPD_CLOCK_SPEED 4 * 1000 * 1000
 
-spi_device_handle_t	epd_spi;
+extern spi_device_handle_t	epd_spi;
 
-static esp_err_t epd_send_cmd(const uint8_t cmd);
-static esp_err_t epd_send_data(const uint8_t data);
-static esp_err_t epd_init_reset();
+esp_err_t epd_send_cmd(const uint8_t cmd);
+esp_err_t epd_send_data(const uint8_t data);
+esp_err_t epd_init_reset();
 esp_err_t epd_init();
+
+#endif //_EPD_SPI_H
+

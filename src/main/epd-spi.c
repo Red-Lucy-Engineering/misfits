@@ -1,4 +1,8 @@
 #include "epd-spi.h"
+#include "driver/spi_master.h"
+
+
+spi_device_handle_t epd_spi;
 
 /**
  * epd_send_cmd() - Send command over SPI in command mode
@@ -6,7 +10,7 @@
  *
  * Return: Non-zero code on error
  */
-static esp_err_t epd_send_cmd(const uint8_t cmd) {
+esp_err_t epd_send_cmd(const uint8_t cmd) {
 	int ret;
 	
 	ret = gpio_set_level(EPD_DC, GPIO_LVL_LOW);
@@ -32,7 +36,7 @@ static esp_err_t epd_send_cmd(const uint8_t cmd) {
  *
  * Return: Non-zero code on error
  */
-static esp_err_t epd_send_data(const uint8_t data) {
+esp_err_t epd_send_data(const uint8_t data) {
 	int ret;
 	
 	ret = gpio_set_level(EPD_DC, GPIO_LVL_HIGH);
@@ -56,7 +60,7 @@ static esp_err_t epd_send_data(const uint8_t data) {
  *
  * Return: non-zero value in case of error
  */
-static esp_err_t epd_init_reset() {
+esp_err_t epd_init_reset() {
 	esp_err_t ret;
 
 	// Initialization sequence: Hardware reset
@@ -65,7 +69,7 @@ static esp_err_t epd_init_reset() {
 		ESP_LOGE(TAG, "Error pulling EPD_RESET low: %d\n", ret);
 		return ret;
 	}
-	bTaskDelay(pdMS_TO_TICKS(10));
+	vTaskDelay(pdMS_TO_TICKS(10));
 
 	ret = gpio_set_level(EPD_RESET, GPIO_LVL_HIGH);
 	if (ret) {
@@ -153,7 +157,7 @@ esp_err_t epd_init() {
 	// Initialize input pin (BUSY pin)
 	io_conf.pin_bit_mask	= (1UL << EPD_BUSY);
 	io_conf.mode		= GPIO_MODE_INPUT;
-	io_conf.pull_up_pen	= GPIO_PULLUP_ENABLE;
+	io_conf.pull_up_en	= GPIO_PULLUP_ENABLE;
 	ret = gpio_config(&io_conf);
 	if (ret) {
 		ESP_LOGE(TAG, "Error initializing GPIO input pin: %d\n", ret);
@@ -164,7 +168,7 @@ esp_err_t epd_init() {
 	spi_bus_config_t buscfg = {
 		.miso_io_num	= -1,
 		.mosi_io_num	= EPD_MOSI,
-		.sclk_to_num	= EPD_SCL,
+		.sclk_io_num	= EPD_SCL,
 		.quadwp_io_num	= -1,
 		.quadhd_io_num	= -1,
 	};
