@@ -105,12 +105,20 @@ static esp_err_t epd_init_reset() {
 		return ret;
 	}
 
+	// wait while busy
+	while (!gpio_get_level(EPD_BUSY))
+		vTaskDelay(pdMS_TO_TICKS(10));
+
 	// Initialization sequence: Software reset
 	ret = epd_send_cmd(CMD_SOFT_RESET);
 	if (ret) {
 		ESP_LOGE(TAG, "Error sending cmd 0x12: %d\n", ret);
 		return ret;
 	}
+
+	// wait while busy
+	while (!gpio_get_level(EPD_BUSY))
+		vTaskDelay(pdMS_TO_TICKS(10));
 
 	// Initialization sequence: Driver output control
 	ret = epd_send_cmd(CMD_DRV_OUT_CTRL);
