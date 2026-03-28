@@ -117,7 +117,7 @@ esp_err_t epd_send_data(const uint8_t data) {
 		return ret;
 	}
 
-	spi_transaction_t t = {.length = 8, .tx_buffer = data};
+	spi_transaction_t t = {.length = 8, .tx_buffer = &data};
 	ret = spi_device_polling_transmit(epd_spi, &t);
 	if (ret) {
 		ESP_LOGE(TAG, "Error sending data over SPI: %d\n", ret);
