@@ -12,17 +12,154 @@
 #define EPD_RESET	8
 #define EPD_BUSY	18
 
+// General GPIO related things
+#define GPIO_LVL_HIGH	1
+#define GPIO_LVL_LOW	0
+
+
+// Important commands for ePaper display
+#define CMD_SOFT_RESET	0x12
+#define CMD_DRV_OUT_CTRL 0x01
+#define CMD_BRD_WVFRM	0x3C
+#define CMD_TMP_SENSOR	0x18
+#define CMD_UPDT_CTRL2	0x22
+#define CMD_MASTER_ACT	0x20
+#define CMD_WRITE_RAM	0x24
+
+
 // 4MHz
 #define EPD_CLOCK_SPEED 4 * 1000 * 1000
 
 spi_device_handle_t	epd_spi;
 
 /**
- * epd_gpio_init() - Initialization function for the ePaper display
+ * epd_send_cmd() - Send command over SPI in command mode
+ * @cmd: command to be sent
  *
  * Return: Non-zero code on error
  */
-esp_err_t epd_gpio_init() {
+static esp_err_t epd_send_cmd(const uint8_t cmd) {
+	int ret;
+	
+	ret = gpio_set_level(EPD_DC, GPIO_LVL_LOW);
+	if (ret) {
+		ESP_LOGE(TAG, "Error setting SPI to cmd mode: %d\n", ret);
+		return ret;
+	}
+
+
+	spi_transaction_t t = {.length = 8, .tx_buffer = &cmd};
+	ret = spi_device_polling_transmit(epd_spi, &t);
+	if (ret) {
+		ESP_LOGE(TAG, "Error sending cmd over SPI: %d\n", ret);
+		return ret;
+	}
+
+	return ret;
+}
+
+/**
+ * epd_send_data() - Send data over SPI in data mode
+ * @cmd: command to be sent
+ *
+ * Return: Non-zero code on error
+ */
+static esp_err_t epd_send_data(const uint8_t data) {
+	int ret;
+	
+	ret = gpio_set_level(EPD_DC, GPIO_LVL_HIGH);
+	if (ret) {
+		ESP_LOGE(TAG, "Error setting SPI to data mode: %d\n", ret);
+		return ret;
+	}
+
+	spi_transaction_t t = {.length = 8, .tx_buffer = &data};
+	ret = spi_device_polling_transmit(epd_spi, &t);
+	if (ret) {
+		ESP_LOGE(TAG, "Error sending data over SPI: %d\n", ret);
+		return ret;
+	}
+	
+	return ret;
+}
+
+/**
+ * epd_init_reset() - Performs reset routines necessary for initialization
+ *
+ * Return: non-zero value in case of error
+ */
+static esp_err_t epd_init_reset() {
+	esp_err_t ret;
+
+	// Initialization sequence: Hardware reset
+	ret = gpio_set_level(EPD_RESET, GPIO_LVL_LOW);
+	if (ret) {
+		ESP_LOGE(TAG, "Error pulling EPD_RESET low: %d\n", ret);
+		return ret;
+	}
+	bTaskDelay(pdMS_TO_TICKS(10));
+
+	ret = gpio_set_level(EPD_RESET, GPIO_LVL_HIGH);
+	if (ret) {
+		ESP_LOGE(TAG, "Error pulling EPD_RESET high: %d\n", ret);
+		return ret;
+	}
+
+	// Initialization sequence: Software reset
+	ret = epd_send_cmd(CMD_SOFT_RESET);
+	if (ret) {
+		ESP_LOGE(TAG, "Error sending cmd 0x12: %d\n", ret);
+		return ret;
+	}
+
+	// Initialization sequence: Driver output control
+	ret = epd_send_cmd(CMD_DRV_OUT_CTRL);
+	if (ret) {
+		ESP_LOGE(TAG, "Error sending cmd 0x01: %d\n", ret);
+		return ret;
+	}
+	// Set resolution to 200x200
+	ret = epd_send_data(0xC7);
+	if (ret) {
+		ESP_LOGE(TAG, "Error sending data for full refresh: %d\n", ret);
+		return ret;
+	}
+	epd_send_data(0x00);
+	epd_send_data(0x00);
+
+	// Border Waveform Control
+	ret = epd_send_cmd(CMD_BRD_WVFRM);
+	if (ret) {
+		ESP_LOGE(TAG, "Error sending Border Waveform Control cmd: %d\n", ret);
+		return ret;
+	}
+	ret = epd_send_data(0x05);
+	if (ret) {
+		ESP_LOGE(TAG, "Error sending Border behavior config: %d\n", ret);
+		return ret;
+	}
+
+	// Temperature sensor select
+	ret = epd_send_cmd(CMD_TMP_SENSOR);
+	if (ret) {
+		ESP_LOGE(TAG, "Error sending Temp Sensor select data: %d\n", ret);
+		return ret;
+	}
+	ret = epd_send_data(0x80);
+	if (ret) {
+		ESP_LOGE(TAG, "Error selecting internal Temp Sensor: %d\n", ret);
+		return ret;
+	}
+
+	return ret;
+}
+
+/**
+ * epd_init() - Initialization function for the ePaper display
+ *
+ * Return: Non-zero code on error
+ */
+esp_err_t epd_init() {
 	esp_err_t ret;
 	
 	// Initialize output pins
@@ -73,57 +210,13 @@ esp_err_t epd_gpio_init() {
 		return ret;
 	}
 
-	return ret;
-}
-
-/**
- * epd_send_cmd() - Send command over SPI in command mode
- * @cmd: command to be sent
- *
- * Return: Non-zero code on error
- */
-esp_err_t epd_send_cmd(const uint8_t cmd) {
-	int ret;
-	
-	ret = gpio_set_level(EPD_DC, 0);
+	// Perform reset routines for initialization
+	ret = epd_init_reset();
 	if (ret) {
-		ESP_LOGE(TAG, "Error setting SPI to cmd mode: %d\n", ret);
-		return ret;
+		ESP_LOGE(TAG, "Error performing reset routines for init: %d\n",
+			       ret);
 	}
 
-
-	spi_transaction_t t = {.length = 8, .tx_buffer = &cmd};
-	ret = spi_device_polling_transmit(epd_spi, &t);
-	if (ret) {
-		ESP_LOGE(TAG, "Error sending cmd over SPI: %d\n", ret);
-		return ret;
-	}
-
-	return ret;
-}
-
-/**
- * epd_send_data() - Send data over SPI in data mode
- * @cmd: command to be sent
- *
- * Return: Non-zero code on error
- */
-esp_err_t epd_send_data(const uint8_t data) {
-	int ret;
-	
-	ret = gpio_set_level(EPD_DC, 1);
-	if (ret) {
-		ESP_LOGE(TAG, "Error setting SPI to data mode: %d\n", ret);
-		return ret;
-	}
-
-	spi_transaction_t t = {.length = 8, .tx_buffer = &data};
-	ret = spi_device_polling_transmit(epd_spi, &t);
-	if (ret) {
-		ESP_LOGE(TAG, "Error sending data over SPI: %d\n", ret);
-		return ret;
-	}
-	
 	return ret;
 }
 
