@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "driver/gptimer.h"
 #include "esp-log.h"
+#include "esp_err.h"
 #include "esp-system.h"
 
 #include "epd-spi.h"
@@ -9,7 +10,7 @@
 
 void app_main(void)
 {
-	int ret;
+	esp_err_t ret;
 
 	// initialize general purpose timer
 	ret = gptimer_new_timer(&timer_config, &gptimer);
