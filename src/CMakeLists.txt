@@ -4,3 +4,6 @@ cmake_minimum_required(VERSION 3.16)
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 project(misfits)
+REQUIRES esp_driver_spi
+REQUIRES esp_driver_gpio
+
