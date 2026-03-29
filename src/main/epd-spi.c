@@ -58,7 +58,8 @@ static esp_err_t epd_send_data(const uint8_t data) {
 /**
  * epd_update_display() - updates the display with given data
  * @buf: Pointer to buffer with data to be sent to the display
- * @size: Size of the buffer containing the data
+ * @size: Size of the buffer containing the data in bytes (expected to be
+ *	  5000 bytes (40000 bits))
  *
  * This function performs the following three steps:
  *	1. Send command CMD_WRITE_RAM
