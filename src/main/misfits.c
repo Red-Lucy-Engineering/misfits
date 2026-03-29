@@ -13,14 +13,6 @@ void app_main(void)
 {
 	esp_err_t ret;
 	
-	// Initialize timer for time-keeping
-	ret = timer_init();
-	if (ret) {
-		ESP_LOGE(TAG, "Error %d: Couldn't initialize timer\n", ret);
-		goto err;
-	}
-
-
 	// initialize ePaper display
 	ret = epd_init();
 	if (ret) {
@@ -28,9 +20,12 @@ void app_main(void)
 		goto err;
 	}
 
-	/* alarm function (basically a callback) to change the time displayed on
-	*  epaper display
-	*/
+	// Initialize timer for time-keeping
+	ret = timer_init();
+	if (ret) {
+		ESP_LOGE(TAG, "Error %d: Couldn't initialize timer\n", ret);
+		goto err;
+	}
 
 
 err:
