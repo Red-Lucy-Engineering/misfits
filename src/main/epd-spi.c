@@ -10,7 +10,7 @@ spi_device_handle_t epd_spi;
  *
  * Return: Non-zero code on error
  */
-esp_err_t epd_send_cmd(const uint8_t cmd) {
+static esp_err_t epd_send_cmd(const uint8_t cmd) {
 	int ret;
 	
 	ret = gpio_set_level(EPD_DC, GPIO_LVL_LOW);
@@ -36,7 +36,7 @@ esp_err_t epd_send_cmd(const uint8_t cmd) {
  *
  * Return: Non-zero code on error
  */
-esp_err_t epd_send_data(const uint8_t data) {
+static esp_err_t epd_send_data(const uint8_t data) {
 	int ret;
 	
 	ret = gpio_set_level(EPD_DC, GPIO_LVL_HIGH);
@@ -60,7 +60,7 @@ esp_err_t epd_send_data(const uint8_t data) {
  *
  * Return: non-zero value in case of error
  */
-esp_err_t epd_init_reset() {
+static esp_err_t epd_init_reset() {
 	esp_err_t ret;
 
 	// Initialization sequence: Hardware reset

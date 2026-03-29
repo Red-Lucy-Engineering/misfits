@@ -35,9 +35,9 @@
 
 extern spi_device_handle_t	epd_spi;
 
-esp_err_t epd_send_cmd(const uint8_t cmd);
-esp_err_t epd_send_data(const uint8_t data);
-esp_err_t epd_init_reset();
+static esp_err_t epd_send_cmd(const uint8_t cmd);
+static esp_err_t epd_send_data(const uint8_t data);
+static esp_err_t epd_init_reset();
 esp_err_t epd_init();
 
 #endif //_EPD_SPI_H
