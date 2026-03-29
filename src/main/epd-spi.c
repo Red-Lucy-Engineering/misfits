@@ -56,6 +56,70 @@ static esp_err_t epd_send_data(const uint8_t data) {
 }
 
 /**
+ * epd_update_display() - updates the display with given data
+ * @buf: Pointer to buffer with data to be sent to the display
+ * @size: Size of the buffer containing the data
+ *
+ * This function performs the following three steps:
+ *	1. Send command CMD_WRITE_RAM
+ * 	2. Writes the user-defined data to display RAM
+ * 	3. Send command CMD_UPDT_CTRL2
+ * 	4. Send data 0xC7 for full display refresh
+ * 	5. Send command CMD_MASTER_ACT to start physical refresh
+ *
+ *
+ * Return: Non-zero code on error
+ */
+esp_err_t epd_update_display(uint8_t *buf, size_t size) {
+	esp_err_t ret = 0;
+
+	if (size != 5000) {
+		ESP_LOGE(TAG,
+			 "Error %d: buffer to update display has incorrect size\n",
+			 ret);
+		return -1;
+	}
+
+	ret = epd_send_cmd(CMD_WRITE_RAM);
+	if (ret) {
+		ESP_LOGE(TAG, "Error %d: Can't send write-RAM command\n", ret);
+		return ret;
+	}
+
+	for (size_t i = 0; i < size; i++) {
+		ret = epd_send_data(buf[i]);
+		if (ret) {
+			ESP_LOGE(TAG, "Error sending data byte %d to display: %d\n",
+				 i, ret);
+			return ret;
+		}
+	}
+	WAIT_BUSY;
+
+	ret = epd_send_cmd(CMD_UPDT_CTRL2);
+	if (ret) {
+		ESP_LOGE(TAG, "Error sending Display update command: %d\n", ret);
+		return ret;
+	}
+
+	ret = epd_send_data(0xC7);
+	if (ret) {
+		ESP_LOGE(TAG, "Error sending refresh area to whole display: %d\n", ret);
+		return ret;
+	}
+	WAIT_BUSY;
+
+	ret = epd_send_cmd(CMD_MASTER_ACT);
+	if (ret) {
+		ESP_LOGE(TAG, "Error sending master activation command: %d\n", ret);
+		return ret;
+	}
+	WAIT_BUSY;
+
+	return ret;
+}
+
+/**
  * epd_init_reset() - Performs reset routines necessary for initialization
  *
  * Return: non-zero value in case of error

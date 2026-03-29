@@ -33,10 +33,14 @@
 // 4MHz
 #define EPD_CLOCK_SPEED 4 * 1000 * 1000
 
+
+#define WAIT_BUSY while (!gpio_get_level(EPD_BUSY)) vTaskDelay(pdMS_TO_TICKS(10))
+
 extern spi_device_handle_t	epd_spi;
 
 static esp_err_t epd_send_cmd(const uint8_t cmd);
 static esp_err_t epd_send_data(const uint8_t data);
+esp_err_t epd_update_display(uint8_t *buf, size_t size);
 static esp_err_t epd_init_reset();
 esp_err_t epd_init();
 
