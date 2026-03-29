@@ -6,39 +6,17 @@
 
 #include "epd-spi.h"
 #include "common-defs.h"
+#include "watch-timer.h"
 
 
 void app_main(void)
 {
 	esp_err_t ret;
-
-	// initialize general purpose timer
 	
-
-	gptimer_handle_t gptimer = NULL;
-
-	gptimer_config_t timer_config = {
-		.clk_src = GPTIMER_CLK_SRC_DEFAULT,
-		.direction = GPTIMER_COUNT_UP,
-		.resolution_hz = 1 * 1000 * 1000, // 1MHz (1 tick = 1 ms)
-	};
-	
-	
-	ret = gptimer_new_timer(&timer_config, &gptimer);
+	// Initialize timer for time-keeping
+	ret = timer_init();
 	if (ret) {
-		ESP_LOGE(TAG, "Error %d: Couldn't create timer instance\n", ret);
-		goto err;
-	}
-
-	ret = gptimer_enable(gptimer);
-	if (ret) {
-		ESP_LOGE(TAG, "Error %d: Couldn't enable timer\n", ret);
-		goto err;
-	}
-
-	ret = gptimer_start(gptimer);
-	if (ret) {
-		ESP_LOGE(TAG, "Error %d: Couldn't start timer\n", ret);
+		ESP_LOGE(TAG, "Error %d: Couldn't initialize timer\n", ret);
 		goto err;
 	}
 
