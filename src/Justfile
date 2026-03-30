@@ -1,0 +1,2 @@
+run:
+    tcc main/graphics.c main/shell.c main/simulator.c -lSDL3 -run

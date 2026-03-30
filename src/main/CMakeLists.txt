@@ -3,6 +3,7 @@ idf_component_register(
 		"misfits.c"
 		"epd-spi.c"
 		"watch-timer.c"
+		"graphics.c"
 	INCLUDE_DIRS
 		"include"
 		"."
