@@ -1,2 +1,2 @@
 run:
-    tcc simulator/*.c shared/*.c -lSDL3 -run
+    MAWS_PATH=shell tcc simulator/*.c shared/*.c -lSDL3 -run

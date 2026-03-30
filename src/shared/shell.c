@@ -2,8 +2,16 @@
 
 #include "include/shell.h"
 #include "include/graphics.h"
+#include "include/filesystem.h"
+#include "include/fe.h"
 
 int shl_init() {
+    const char *program = fls_read("program.fe", NULL);
+    if (program == NULL) {
+        printf("Oops! No program.\n");
+        return 1;
+    }
+
     return 0;
 }
 

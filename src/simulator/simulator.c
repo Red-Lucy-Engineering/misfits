@@ -9,6 +9,7 @@
 
 #include "../shared/include/graphics.h"
 #include "../shared/include/shell.h"
+#include "../shared/include/filesystem.h"
 
 #define SIM_SCALE      3
 #define SIM_WIN_WIDTH  (GRA_SCREEN_WIDTH  * SIM_SCALE)
@@ -33,7 +34,9 @@ int main(void) {
         GRA_SCREEN_WIDTH, GRA_SCREEN_HEIGHT
     );
 
-    shl_init();
+    if (fls_init()) return 1;
+    if (shl_init()) return 1;
+
     shl_on_minute();
 
     bool running    = true;
