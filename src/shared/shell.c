@@ -1,9 +1,9 @@
-// TODO: Port to the ESP error handling type thingy.
-
 #include "include/shell.h"
 #include "include/graphics.h"
 #include "include/filesystem.h"
 #include "include/fe.h"
+
+typedef int esp_err_t;
 
 int shl_init() {
     const char *program = fls_read("program.fe", NULL);
