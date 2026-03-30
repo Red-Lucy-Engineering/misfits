@@ -1,9 +1,0 @@
-idf_component_register(
-	SRCS
-		"simulator.c"
-		"../shared/graphics.c"
-		"../shared/shell.c"
-	INCLUDE_DIRS
-		"include"
-		"."
-)

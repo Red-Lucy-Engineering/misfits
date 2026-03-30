@@ -3,9 +3,11 @@ idf_component_register(
 		"misfits.c"
 		"epd-spi.c"
 		"watch-timer.c"
-		"../shared/graphics.c"
-		"../shared/shell.c"
 	INCLUDE_DIRS
 		"include"
 		"."
+	REQUIRES
+		"esp_driver_gpio"
+		"esp_driver_gptimer"
+		"esp_driver_spi"
 )
