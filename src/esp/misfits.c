@@ -6,7 +6,10 @@
 
 #include "epd-spi.h"
 #include "common-defs.h"
+#include "graphics.h"
 #include "watch-timer.h"
+
+#include "include/graphics.h"
 
 
 void app_main(void)
@@ -26,6 +29,9 @@ void app_main(void)
 		ESP_LOGE(TAG, "Error %d: Couldn't initialize timer\n", ret);
 		goto err;
 	}
+
+	gra_clear((char) 0xFF);
+	ret = epd_update_display(gra_screen_buffer, 5000);
 
 
 err:

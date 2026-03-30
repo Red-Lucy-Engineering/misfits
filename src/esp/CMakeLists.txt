@@ -5,6 +5,7 @@ idf_component_register(
 		"watch-timer.c"
 	INCLUDE_DIRS
 		"include"
+		"../shared/include"
 		"."
 	REQUIRES
 		"esp_driver_gpio"
