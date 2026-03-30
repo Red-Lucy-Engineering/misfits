@@ -7,8 +7,8 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "include/graphics.h"
-#include "include/shell.h"
+#include "../shared/include/graphics.h"
+#include "../shared/include/shell.h"
 
 #define SIM_SCALE      3
 #define SIM_WIN_WIDTH  (GRA_SCREEN_WIDTH  * SIM_SCALE)

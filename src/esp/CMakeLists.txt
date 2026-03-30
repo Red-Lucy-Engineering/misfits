@@ -1,0 +1,11 @@
+idf_component_register(
+	SRCS
+		"misfits.c"
+		"epd-spi.c"
+		"watch-timer.c"
+		"../shared/graphics.c"
+		"../shared/shell.c"
+	INCLUDE_DIRS
+		"include"
+		"."
+)
