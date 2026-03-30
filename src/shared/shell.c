@@ -2,7 +2,6 @@
 #include "include/api.h"
 #include "include/filesystem.h"
 #include "include/fe.h"
-#include "include/graphics.h"
 
 #define FE_MEMORY_SIZE (1024 * 1024 * 8)
 void *fe_memory = NULL;
