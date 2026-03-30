@@ -1,0 +1,18 @@
+; It works! It's fucking working! Muahaha
+
+(= on_init
+    (fn ()
+    )
+)
+
+(= on_minute
+    (fn (time)
+        (rect_line true 2 2 (- SCR_WIDTH 4) (- SCR_HEIGHT 4))
+        (line true 10 10 40 40)
+    )
+)
+
+(= on_button
+    (fn (btn)
+    )
+)

@@ -1,2 +1,5 @@
+CC := "tcc"
+
 run:
-    MAWS_PATH=shell tcc simulator/*.c shared/*.c -lSDL3 -run
+    cc simulator/*.c shared/*.c -lSDL3 -o sim
+    MAWS_PATH=shell ./sim
