@@ -49,7 +49,7 @@ static inline esp_err_t epd_send_cmd(const uint8_t cmd) {
 	
 	ret = gpio_set_level(EPD_DC, GPIO_LVL_LOW);
 	if (ret) {
-		ESP_LOGE(TAG, "Error setting SPI to cmd mode: %d\n", ret);
+		ESP_LOGE("epd_send_cmd", "Error setting SPI to cmd mode: %d\n", ret);
 		return ret;
 	}
 
@@ -57,7 +57,7 @@ static inline esp_err_t epd_send_cmd(const uint8_t cmd) {
 	spi_transaction_t t = {.length = 8, .tx_buffer = &cmd};
 	ret = spi_device_polling_transmit(epd_spi, &t);
 	if (ret) {
-		ESP_LOGE(TAG, "Error sending cmd over SPI: %d\n", ret);
+		ESP_LOGE("epd_send_cmd", "Error sending cmd over SPI: %d\n", ret);
 		return ret;
 	}
 
@@ -75,14 +75,14 @@ static inline esp_err_t epd_send_data(const uint8_t data) {
 	
 	ret = gpio_set_level(EPD_DC, GPIO_LVL_HIGH);
 	if (ret) {
-		ESP_LOGE(TAG, "Error setting SPI to data mode: %d\n", ret);
+		ESP_LOGE("epd_send_data", "Error setting SPI to data mode: %d\n", ret);
 		return ret;
 	}
 
 	spi_transaction_t t = {.length = 8, .tx_buffer = &data};
 	ret = spi_device_polling_transmit(epd_spi, &t);
 	if (ret) {
-		ESP_LOGE(TAG, "Error sending data over SPI: %d\n", ret);
+		ESP_LOGE("epd_send_data", "Error sending data over SPI: %d\n", ret);
 		return ret;
 	}
 	
@@ -102,14 +102,14 @@ static inline esp_err_t epd_init_reset() {
 	// Initialization sequence: Hardware reset
 	ret = gpio_set_level(EPD_RESET, GPIO_LVL_LOW);
 	if (ret) {
-		ESP_LOGE(TAG, "Error pulling EPD_RESET low: %d\n", ret);
+		ESP_LOGE("epd_init_reset", "Error pulling EPD_RESET low: %d\n", ret);
 		return ret;
 	}
 	vTaskDelay(pdMS_TO_TICKS(10));
 
 	ret = gpio_set_level(EPD_RESET, GPIO_LVL_HIGH);
 	if (ret) {
-		ESP_LOGE(TAG, "Error pulling EPD_RESET high: %d\n", ret);
+		ESP_LOGE("epd_init_reset", "Error pulling EPD_RESET high: %d\n", ret);
 		return ret;
 	}
 
@@ -120,7 +120,7 @@ static inline esp_err_t epd_init_reset() {
 	// Initialization sequence: Software reset
 	ret = epd_send_cmd(CMD_SOFT_RESET);
 	if (ret) {
-		ESP_LOGE(TAG, "Error sending cmd 0x12: %d\n", ret);
+		ESP_LOGE("epd_init_reset", "Error sending cmd 0x12: %d\n", ret);
 		return ret;
 	}
 
@@ -131,13 +131,13 @@ static inline esp_err_t epd_init_reset() {
 	// Initialization sequence: Driver output control
 	ret = epd_send_cmd(CMD_DRV_OUT_CTRL);
 	if (ret) {
-		ESP_LOGE(TAG, "Error sending cmd 0x01: %d\n", ret);
+		ESP_LOGE("epd_init_reset", "Error sending cmd 0x01: %d\n", ret);
 		return ret;
 	}
 	// Set resolution to 200x200
 	ret = epd_send_data(0xC7);
 	if (ret) {
-		ESP_LOGE(TAG, "Error sending data for full refresh: %d\n", ret);
+		ESP_LOGE("epd_init_reset", "Error sending data for full refresh: %d\n", ret);
 		return ret;
 	}
 	epd_send_data(0x00);
@@ -146,24 +146,24 @@ static inline esp_err_t epd_init_reset() {
 	// Border Waveform Control
 	ret = epd_send_cmd(CMD_BRD_WVFRM);
 	if (ret) {
-		ESP_LOGE(TAG, "Error sending Border Waveform Control cmd: %d\n", ret);
+		ESP_LOGE("epd_init_reset", "Error sending Border Waveform Control cmd: %d\n", ret);
 		return ret;
 	}
 	ret = epd_send_data(0x05);
 	if (ret) {
-		ESP_LOGE(TAG, "Error sending Border behavior config: %d\n", ret);
+		ESP_LOGE("epd_init_reset", "Error sending Border behavior config: %d\n", ret);
 		return ret;
 	}
 
 	// Temperature sensor select
 	ret = epd_send_cmd(CMD_TMP_SENSOR);
 	if (ret) {
-		ESP_LOGE(TAG, "Error sending Temp Sensor select data: %d\n", ret);
+		ESP_LOGE("epd_init_reset", "Error sending Temp Sensor select data: %d\n", ret);
 		return ret;
 	}
 	ret = epd_send_data(0x80);
 	if (ret) {
-		ESP_LOGE(TAG, "Error selecting internal Temp Sensor: %d\n", ret);
+		ESP_LOGE("epd_init_reset", "Error selecting internal Temp Sensor: %d\n", ret);
 		return ret;
 	}
 

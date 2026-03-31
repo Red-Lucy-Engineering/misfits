@@ -25,7 +25,7 @@ esp_err_t epd_update_display(uint8_t *buf, size_t size) {
 	esp_err_t ret = 0;
 
 	if (size != 5000) {
-		ESP_LOGE(TAG,
+		ESP_LOGE("epd_update_display",
 			 "Error %d: buffer to update display has incorrect size\n",
 			 ret);
 		return -1;
@@ -33,14 +33,14 @@ esp_err_t epd_update_display(uint8_t *buf, size_t size) {
 
 	ret = epd_send_cmd(CMD_WRITE_RAM);
 	if (ret) {
-		ESP_LOGE(TAG, "Error %d: Can't send write-RAM command\n", ret);
+		ESP_LOGE("epd_update_display", "Error %d: Can't send write-RAM command\n", ret);
 		return ret;
 	}
 
 	for (size_t i = 0; i < size; i++) {
 		ret = epd_send_data(buf[i]);
 		if (ret) {
-			ESP_LOGE(TAG, "Error sending data byte %d to display: %d\n",
+			ESP_LOGE("epd_update_display", "Error sending data byte %d to display: %d\n",
 				 i, ret);
 			return ret;
 		}
@@ -49,20 +49,20 @@ esp_err_t epd_update_display(uint8_t *buf, size_t size) {
 
 	ret = epd_send_cmd(CMD_UPDT_CTRL2);
 	if (ret) {
-		ESP_LOGE(TAG, "Error sending Display update command: %d\n", ret);
+		ESP_LOGE("epd_update_display", "Error sending Display update command: %d\n", ret);
 		return ret;
 	}
 
 	ret = epd_send_data(0xC7);
 	if (ret) {
-		ESP_LOGE(TAG, "Error sending refresh area to whole display: %d\n", ret);
+		ESP_LOGE("epd_update_display", "Error sending refresh area to whole display: %d\n", ret);
 		return ret;
 	}
 	WAIT_BUSY;
 
 	ret = epd_send_cmd(CMD_MASTER_ACT);
 	if (ret) {
-		ESP_LOGE(TAG, "Error sending master activation command: %d\n", ret);
+		ESP_LOGE("epd_udpate_display", "Error sending master activation command: %d\n", ret);
 		return ret;
 	}
 	WAIT_BUSY;
@@ -79,6 +79,8 @@ esp_err_t epd_update_display(uint8_t *buf, size_t size) {
 esp_err_t epd_init() {
 	esp_err_t ret;
 	
+	ESP_LOGI("epd_init", "Starting to configure gpio output pins\n");
+
 	// Initialize output pins
 	gpio_config_t io_conf = {
 		.pin_bit_mask	= (1ULL << EPD_DC) | (1ULL << EPD_RESET),
@@ -87,20 +89,24 @@ esp_err_t epd_init() {
 	};
 	ret = gpio_config(&io_conf);
 	if (ret) {
-		ESP_LOGE(TAG, "Error initializing GPIO Output pins: %d\n", ret);
+		ESP_LOGE("epd_init", "Error initializing GPIO Output pins: %d\n", ret);
 		return ret;
 	}
+	ESP_LOGI("epd_init", "configured gpio output pins\n");
 
+	ESP_LOGI("epd_init", "Configure input gpio pin\n");
 	// Initialize input pin (BUSY pin)
 	io_conf.pin_bit_mask	= (1UL << EPD_BUSY);
 	io_conf.mode		= GPIO_MODE_INPUT;
 	io_conf.pull_up_en	= GPIO_PULLUP_ENABLE;
 	ret = gpio_config(&io_conf);
 	if (ret) {
-		ESP_LOGE(TAG, "Error initializing GPIO input pin: %d\n", ret);
+		ESP_LOGE("epd_init", "Error initializing GPIO input pin: %d\n", ret);
 		return ret;
 	}
+	ESP_LOGI("epd_init", "configured gpio input pins\n");
 
+	ESP_LOGI("epd_init", "Configure SPI bus\n");
 	// Initialize SPI bus
 	spi_bus_config_t buscfg = {
 		.miso_io_num	= -1,
@@ -111,10 +117,12 @@ esp_err_t epd_init() {
 	};
 	ret = spi_bus_initialize(SPI2_HOST, &buscfg, SPI_DMA_CH_AUTO);
 	if (ret) {
-		ESP_LOGE(TAG, "Error initializing SPI bus: %d\n", ret);
+		ESP_LOGE("epd_init", "Error initializing SPI bus: %d\n", ret);
 		return ret;
 	}
+	ESP_LOGI("epd_init", "Configured SPI bus\n");
 
+	ESP_LOGI("epd_init", "Configure SPI interface\n");
 	spi_device_interface_config_t devcfg = {
 		.clock_speed_hz	= EPD_CLOCK_SPEED,
 		.mode		= 0,
@@ -123,16 +131,19 @@ esp_err_t epd_init() {
 	};
 	ret = spi_bus_add_device(SPI2_HOST, &devcfg, &epd_spi);
 	if (ret) {
-		ESP_LOGE(TAG, "Error adding device to SPI bus: %d\n", ret);
+		ESP_LOGE("epd_update", "Error adding device to SPI bus: %d\n", ret);
 		return ret;
 	}
+	ESP_LOGI("epd_init", "Configured SPI interface\n");
 
+	ESP_LOGI("epd_init", "Begin reset routines\n");
 	// Perform reset routines for initialization
 	ret = epd_init_reset();
 	if (ret) {
-		ESP_LOGE(TAG, "Error performing reset routines for init: %d\n",
+		ESP_LOGE("epd_udpate", "Error performing reset routines for init: %d\n",
 			       ret);
 	}
+	ESP_LOGI("epd_init", "Finished reset routines, ePaper display initialized\n");
 
 	return ret;
 }
