@@ -9,7 +9,7 @@
 #include "graphics.h"
 #include "watch-timer.h"
 
-#include "include/graphics.h"
+#include "graphics.h"
 
 
 void app_main(void)
@@ -32,6 +32,10 @@ void app_main(void)
 
 	gra_clear((char) 0xFF);
 	ret = epd_update_display(gra_screen_buffer, 5000);
+	if (ret) {
+		ESP_LOGE(TAG, "Error %d: couldn't update display\n");
+		goto err;
+	}
 
 
 err:

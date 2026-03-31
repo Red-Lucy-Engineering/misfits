@@ -3,6 +3,8 @@ idf_component_register(
 		"misfits.c"
 		"epd-spi.c"
 		"watch-timer.c"
+		"../shared/graphics.c"
+		"../shared/shell.c"
 	INCLUDE_DIRS
 		"include"
 		"../shared/include"
