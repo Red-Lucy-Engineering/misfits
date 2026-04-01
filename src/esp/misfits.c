@@ -25,6 +25,8 @@ void app_main(void)
 		goto err;
 	}
 
+	ESP_LOGI("misfits.c", "ePaper display initialized\n");
+
 	/*
 	// Initialize timer for time-keeping
 	ret = timer_init();
@@ -34,12 +36,21 @@ void app_main(void)
 	}
 	*/
 
+	ESP_LOGI("misfits.c", "setting local buffer to black for display\n");
 	gra_clear((char) 0xFF);
+	ESP_LOGI("misfits.c", "Updating display\n");
 	ret = epd_update_display(gra_screen_buffer, 5000);
 	if (ret) {
 		ESP_LOGE("misfits.c", "Error %d: couldn't update display\n");
 		goto err;
 	}
+	ESP_LOGI("misfits.c", "Display successfully updated\n");
+	ret = epd_update_display(gra_screen_buffer, 5000);
+	if (ret) {
+		ESP_LOGE("misfits.c", "Error %d: couldn't update display\n");
+		goto err;
+	}
+	ESP_LOGI("misfits.c", "display successfully updated\n");
 
 
 err:

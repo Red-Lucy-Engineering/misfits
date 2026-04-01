@@ -24,6 +24,8 @@ spi_device_handle_t epd_spi;
 esp_err_t epd_update_display(uint8_t *buf, size_t size) {
 	esp_err_t ret = 0;
 
+	ESP_LOGI("epd_update_display", "start\n");
+
 	if (size != 5000) {
 		ESP_LOGE("epd_update_display",
 			 "Error %d: buffer to update display has incorrect size\n",
@@ -31,41 +33,52 @@ esp_err_t epd_update_display(uint8_t *buf, size_t size) {
 		return -1;
 	}
 
+	ESP_LOGI("epd_update_display", "sending command CMD_WRITE_RAM\n");
 	ret = epd_send_cmd(CMD_WRITE_RAM);
 	if (ret) {
 		ESP_LOGE("epd_update_display", "Error %d: Can't send write-RAM command\n", ret);
 		return ret;
 	}
+	ESP_LOGI("epd_update_display", "command successful\n");
 
 	for (size_t i = 0; i < size; i++) {
+		ESP_LOGI("epd_update_display", "sending byte %d as data\n",
+			  i);
 		ret = epd_send_data(buf[i]);
 		if (ret) {
 			ESP_LOGE("epd_update_display", "Error sending data byte %d to display: %d\n",
 				 i, ret);
 			return ret;
 		}
+		ESP_LOGI("epd_update_display", "byte %d sent successful\n", i);
 	}
 	WAIT_BUSY;
 
+	ESP_LOGI("epd_update_display", "sending command CMD_UPDT_CTRL2\n");
 	ret = epd_send_cmd(CMD_UPDT_CTRL2);
 	if (ret) {
 		ESP_LOGE("epd_update_display", "Error sending Display update command: %d\n", ret);
 		return ret;
 	}
+	ESP_LOGI("epd_update_display", "command successful\n");
 
+	ESP_LOGI("epd_update_display", "sending refresh area for whole screen\n");
 	ret = epd_send_data(0xC7);
 	if (ret) {
 		ESP_LOGE("epd_update_display", "Error sending refresh area to whole display: %d\n", ret);
 		return ret;
 	}
+	ESP_LOGI("epd_update_display", "sending data successful\n");
 	WAIT_BUSY;
 
+	ESP_LOGI("epd_update_display", "sending command CMD_MASTER_ACT\n");
 	ret = epd_send_cmd(CMD_MASTER_ACT);
 	if (ret) {
 		ESP_LOGE("epd_udpate_display", "Error sending master activation command: %d\n", ret);
 		return ret;
 	}
 	WAIT_BUSY;
+	ESP_LOGI("epd_update_display", "sending command successful\n");
 
 	return ret;
 }
