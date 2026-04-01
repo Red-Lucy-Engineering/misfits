@@ -1,0 +1,54 @@
+shared/
+    implements:
+        - A set of rendering routines
+        - The Fe programming language by RXI
+        - Font loading (MF file format)
+        - An external API for the Fe programming language context.
+        - The FE file loader
+        - Helpful headers such as filesystem.h
+
+    Its primary role is to manage the programmable features, and interface for
+    the Misfits Watch.
+
+    It must remain simple, and decoupled from the rest of the logic. It is the
+    primary consumer of the "backends."
+
+simulator/
+    implements:
+        - A "backend" which:
+        - Implements the filesystem API from basic fopen() OS abstractions.
+        - Implements an e-paper-like simulator for the shell, which runs
+          natively on a modern system through SDL3.
+
+    This is one of the accepted backends, and must be seen as the reference
+    backend to build the real thing, which is stored in esp/.
+
+    It takes in the MAWS_SHELL environment variable which must point a folder
+    with a "program.fe" file inside, simulating the writable memory of the
+    Misfits Watch.
+
+    Buttons 1-4 are mapped to the four buttons found in the real thing, and F
+    must be used to forcefully trigger a minute interrupt.
+
+esp/
+    implements:
+        - A "backend" which
+        - ... TODO
+
+    This is the main backend, it has a dependency on the official ESP sdk and
+    it's quite special and low level, this is the actual code that will be
+    running on the watch.
+
+font/
+    This folder is dedicated exclusively to the default font that comes with the
+    watch (shell/display.mf).
+
+    It includes the following:
+    - The file format description, so implementers can implement encoders and
+      decoders for their own projects or customizations.
+    - An inkscape-generated SVG that encodes a bunch of glyphs.
+    - A simple python tool that turns SVGs into actual .MF files.
+
+shell/
+    The shell itself, written in Fe.
+    TODO: API specification!
