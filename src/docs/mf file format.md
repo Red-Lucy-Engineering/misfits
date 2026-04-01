@@ -1,7 +1,7 @@
 # The .MF File Format
 
-The MF (Misfits Font) file format aims to concretely describe a font by defining 
-every single one of it's glyphs as a collection of coordinates that must be 
+The MF (Misfits Font) file format aims to concretely describe a font by defining
+every single one of its glyphs as a collection of coordinates that must be
 connected with lines.
 
 Files of the MF file format must have:
@@ -13,51 +13,62 @@ Files of the MF file format must have:
 It is little endian, and the current version is `MSv01`. Public Domain.
 
 
-## The header.
+## The header
 
-The header is composed of a singular string that is version-specific, right now 
-it is `MSv01`. It may change in the future to cleanly denote breaking changes.
+The header is composed of the version string `MSv01`, zero-terminated, taking
+exactly 6 bytes. It is followed by a `uint16_t` encoding the total number of
+entries in the glyph index. This count excludes the null terminator entry.
 
-It must be zero-terminated, being exactly 6 bytes in total.
+| Field        | Type       | Size    | Description                          |
+|--------------|------------|---------|--------------------------------------|
+| version      | char[6]    | 6 bytes | Version string, zero-terminated      |
+| glyph_count  | uint16_t   | 2 bytes | Number of entries in the glyph index |
+
+Total header size: 8 bytes.
 
 
 ## The index of glyphs
 
-The index of glyphs is defined as tightly packed structure of the following 
-shape:
+The glyph index immediately follows the header. It is a tightly packed array (no 
+padding) of `glyph_count` entries, each of the following shape:
 
-`struct { char codepoint, uint16_t offset }`
-- `codepoint`: The glyph character to define geometry for.
-- `offset`: The offset (from file start) pointing to geometry.
+`struct { uint8_t codepoint; uint16_t offset; uint8_t vertex_count; }`
 
-One must traverse the entire structure until `codepoint` is `\0`.
+- `codepoint`: The ASCII codepoint of the glyph to define geometry for.
+- `offset`: The byte offset from the start of the file pointing to the start of
+  the glyph's geometry.
+- `vertex_count`: The number of vertices in this glyph's geometry.
 
-The index of glyphs must be ordered by `codepoint` from minor to major, so that 
-implementations can do a binary search to find the right geometry per codepoint 
-in an efficient manner.
-
-The codepoint must be in the ASCII format.
+The index must be ordered by `codepoint` in ascending order, so that
+implementations can perform a binary search to find the right entry efficiently.
+`glyph_count` gives the exact bounds needed to do so.
 
 
-## The geometry.
+## The geometry
 
-Each vertex in the geometry must be encoded as a singular byte of an opaque type 
-(usually an `uint8_t`) which is split to encode the X, and Y components.
+Each glyph's geometry is a sequence of vertices stored at the offset indicated
+by its index entry. The number of vertices to read is given by `vertex_count`
+in the index entry.
 
-The first 4 bits should be taken and interpreted as the X coordinate, and the 
-last 4 bits should be taken and interpreted as the Y coordinate.
+Each vertex is encoded as a single `uint8_t`, split into two 4-bit components:
 
-Both of them should be mapped to the range of 0 to 15.
+- **High nibble (bits 7–4):** X coordinate, in the range 0–15.
+- **Low nibble (bits 3–0):** Y coordinate, in the range 0–15.
+
+The vertices are interpreted as a polyline: each vertex connects to the next
+with a straight line.
 
 
 ## Example implementation flow
 
-### Loading MF files.
-1. Check the header, then skip it.
-2. Store the glyph index offset or pointer for later
+### Loading MF files
+1. Read and validate the header string (`MSv01`).
+2. Read `glyph_count` from the header.
+3. Read `glyph_count` index entries into a packed array for binary search.
 
-### When trying to render:
-1. Iterate through every character in a piece of text
-2. Use the glyph index offset to perform a binary search
-3. Decode the geometry, coordinate by coordinate
-4. Use line rendering routines to draw the geometry
+### When trying to render
+1. Iterate through every character in a piece of text.
+2. Binary search the glyph index using `glyph_count` as the bounds.
+3. Seek to the geometry offset from the index entry.
+4. Decode `vertex_count` vertices and draw the stroke as a polyline.
+5. Use line rendering routines to draw each stroke.
