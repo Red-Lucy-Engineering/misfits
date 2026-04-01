@@ -45,6 +45,7 @@ esp_err_t epd_update_display(uint8_t *buf, size_t size) {
 		ESP_LOGI("epd_update_display", "sending byte %d as data\n",
 			  i);
 		ret = epd_send_data(buf[i]);
+		vTaskDelay(pdMS_TO_TICKS(10));
 		if (ret) {
 			ESP_LOGE("epd_update_display", "Error sending data byte %d to display: %d\n",
 				 i, ret);
