@@ -130,7 +130,7 @@ void gra_line(char black, int x0, int y0, int x1, int y1) {
     int err = dx + dy;
 
     while (1) {
-        gra_blit(black, x0, y0);
+        gra_blit(black, x0, y0); // TODO: Swap this out with something better?
 
         if (x0 == x1 && y0 == y1)
             break;

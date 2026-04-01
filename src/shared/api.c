@@ -43,10 +43,6 @@ static fe_Object *api_ceil(fe_Context *ctx, fe_Object *args) {
     return fe_number(ctx, ceilf(_fe_numarg(ctx, &args)));
 }
 
-static fe_Object *api_round(fe_Context *ctx, fe_Object *args) {
-    return fe_number(ctx, roundf(_fe_numarg(ctx, &args)));
-}
-
 static fe_Object *api_min(fe_Context *ctx, fe_Object *args) {
     fe_Number r = _fe_numarg(ctx, &args);
     while (!fe_isnil(ctx, args)) {
@@ -135,19 +131,7 @@ static fe_Object *api_gte(fe_Context *ctx, fe_Object *args) {
     return fe_bool(ctx, a >= b);
 }
 
-// TODO: Manage string equity
-static fe_Object *api_eq(fe_Context *ctx, fe_Object *args) {
-    fe_Number a = _fe_numarg(ctx, &args);
-    fe_Number b = _fe_numarg(ctx, &args);
-    return fe_bool(ctx, a == b);
-}
-
-static fe_Object *api_neq(fe_Context *ctx, fe_Object *args) {
-    fe_Number a = _fe_numarg(ctx, &args);
-    fe_Number b = _fe_numarg(ctx, &args);
-    return fe_bool(ctx, a == b);
-}
-
+// TODO: replace with some better algo
 static fe_Object *api_rand(fe_Context *ctx, fe_Object *args) {
     fe_Number r = (fe_Number)rand() / ((fe_Number)RAND_MAX + 1.0f);
     if (fe_isnil(ctx, args)) return fe_number(ctx, r);
@@ -157,16 +141,12 @@ static fe_Object *api_rand(fe_Context *ctx, fe_Object *args) {
     return fe_number(ctx, a + r * (b - a));
 }
 
-static fe_Object *api_srand(fe_Context *ctx, fe_Object *args) {
-    srand((unsigned int)_fe_numarg(ctx, &args));
-    return fe_bool(ctx, 1);
-}
-
 static fe_Object *api_strlen(fe_Context *ctx, fe_Object *args) {
     fe_tostring(ctx, fe_nextarg(ctx, &args), buf, sizeof(buf));
     return fe_number(ctx, (fe_Number)strlen(buf));
 }
 
+// TODO: gauge whether this even makes sense.
 static fe_Object *api_strcat(fe_Context *ctx, fe_Object *args) {
     char result[2048] = {0};
     char part[512];
@@ -189,17 +169,6 @@ static fe_Object *api_numtostr(fe_Context *ctx, fe_Object *args) {
 static fe_Object *api_strtonum(fe_Context *ctx, fe_Object *args) {
     fe_tostring(ctx, fe_nextarg(ctx, &args), buf, sizeof(buf));
     return fe_number(ctx, (fe_Number)atof(buf));
-}
-
-static fe_Object *api_trace(fe_Context *ctx, fe_Object *args) {
-    int first = 1;
-    while (!fe_isnil(ctx, args)) {
-        if (!first) putchar(' ');
-        fe_writefp(ctx, fe_nextarg(ctx, &args), stdout);
-        first = 0;
-    }
-    putchar('\n');
-    return fe_bool(ctx, 1);
 }
 
 static fe_Object *api_time(fe_Context *ctx, fe_Object *args) {
@@ -257,7 +226,7 @@ static fe_Object *api_set_font(fe_Context *ctx, fe_Object *args) {
     return fe_bool(ctx, 1);
 }
 
-static fe_Object *api_print(fe_Context *ctx, fe_Object *args) {
+static fe_Object *api_write(fe_Context *ctx, fe_Object *args) {
     fe_tostring(ctx, fe_nextarg(ctx, &args), buf, sizeof(buf));
     fe_Number x = _fe_numarg(ctx, &args);
     fe_Number y = _fe_numarg(ctx, &args);
@@ -284,7 +253,6 @@ static const fe_Registry api_entries[] = {
     { "abs",            api_abs      },
     { "floor",          api_floor    },
     { "ceil",           api_ceil     },
-    { "round",          api_round    },
     { "min",            api_min      },
     { "max",            api_max      },
     { "clamp",          api_clamp    },
@@ -301,15 +269,11 @@ static const fe_Registry api_entries[] = {
     { "exp",            api_exp      },
     { ">",              api_gt       },
     { ">=",             api_gte      },
-    { "==",             api_eq       },
-    { "!=",             api_neq      },
     { "rand",           api_rand     },
-    { "srand",          api_srand    },
-    { "strlen",         api_strlen   },
+    { "strlen",         api_strlen   }, // TODO: Consider generalizing and renaming to # ?
     { "cat",            api_strcat   },
-    { "number2string",  api_numtostr },
+    { "number2string",  api_numtostr }, // TODO: TOSTRING, TONUMBER.
     { "string2number",  api_strtonum },
-    { "trace",          api_trace    },
     { "time",           api_time     },
 
     { "clear",          api_clear     },
@@ -318,7 +282,7 @@ static const fe_Registry api_entries[] = {
     { "rect_line",      api_rect_line },
     { "rect_fill",      api_rect_fill },
     { "set_font",       api_set_font  },
-    { "print",          api_print     },
+    { "write",          api_write     },
 
     { NULL, NULL }
 };

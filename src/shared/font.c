@@ -4,6 +4,8 @@
 #include <string.h>
 #include <stdio.h>
 
+// TODO: COMMENT THIS CODE! Try on the ESP
+
 typedef struct {
     uint8_t  codepoint;
     uint16_t offset;

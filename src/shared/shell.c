@@ -21,7 +21,7 @@ static void fe_callback(const char *name, unsigned int number) {
     objs[0] = fe_symbol(fe_context, name);
     objs[1] = fe_number(fe_context, number);
 
-    fe_eval(fe_context, fe_list(fe_context, objs, 1));
+    fe_eval(fe_context, fe_list(fe_context, objs, 2));
     fe_restoregc(fe_context, gc);
 }
 

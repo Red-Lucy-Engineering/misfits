@@ -4,15 +4,15 @@
 
 (= on_init
     (fn ()
-        (rect_line true 2 2 (- SCR_WIDTH 4) (- SCR_HEIGHT 4))
+        (print "The shell says hello world!")
 
         (let i 0)
         (let y 15)
         (while (< i 6)
             (let s (* i 6))
-            (print "MISFITS" 0 y 8 s ALIGN_CENTER)
+            (write "MISFITS" 0 y 8 s ALIGN_CENTER)
             (= i (+ i 1))
-            (= y (+ y (+ s 2)))
+            (= y (+ y s 2))
         )
     )
 )
@@ -20,14 +20,25 @@
 (= on_minute
     (fn (time)
         (clear false)
-        (print "00 00" 0 80 16 32 ALIGN_CENTER)
+
+        (write "MISFITS" 10 10 8 8 ALIGN_LEFT  (- SCR_WIDTH 20))
+        (write "TUE" 10 10 8 8 ALIGN_RIGHT (- SCR_WIDTH 20))
+
+        (rect_line true 154 7 37 14)
+
+        (write "00 00" 0 80 16 32 ALIGN_CENTER)
     )
 )
 
 (= on_button
     (fn (btn)
         (clear false)
-        (print "BUTTON PRESSED!" 0 80 8 8 ALIGN_CENTER)
 
+        (if
+            (is btn 0) (write "ZERO" 0 80 8 8 ALIGN_CENTER)
+            (is btn 1) (write "ONE" 0 80 8 8 ALIGN_CENTER)
+            (is btn 2) (write "TWO" 0 80 8 8 ALIGN_CENTER)
+            (is btn 3) (write "THREE" 0 80 8 8 ALIGN_CENTER)
+        )
     )
 )
