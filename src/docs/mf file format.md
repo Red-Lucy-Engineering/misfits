@@ -64,7 +64,7 @@ with a straight line.
 ### Loading MF files
 1. Read and validate the header string (`MSv01`).
 2. Read `glyph_count` from the header.
-3. Read `glyph_count` index entries into a packed array for binary search.
+3. Keep track of the glyph index. (Memory mapping comes in handy.)  
 
 ### When trying to render
 1. Iterate through every character in a piece of text.
