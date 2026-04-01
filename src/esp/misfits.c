@@ -45,6 +45,10 @@ void app_main(void)
 		goto err;
 	}
 	ESP_LOGI("misfits.c", "Display successfully updated\n");
+	vTaskDelay(pdMS_TO_TICKS(1000));
+
+	ESP_LOGI("misfits.c", "setting local buffer to white for display\n");
+	gra_clear((char) 0x00);
 	ret = epd_update_display(gra_screen_buffer, 5000);
 	if (ret) {
 		ESP_LOGE("misfits.c", "Error %d: couldn't update display\n");
