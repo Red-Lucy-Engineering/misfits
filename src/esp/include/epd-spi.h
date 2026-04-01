@@ -34,7 +34,7 @@
 #define EPD_CLOCK_SPEED 4 * 1000 * 1000
 
 
-#define WAIT_BUSY while (!gpio_get_level(EPD_BUSY)) vTaskDelay(pdMS_TO_TICKS(10))
+#define WAIT_BUSY while (gpio_get_level(EPD_BUSY)) vTaskDelay(pdMS_TO_TICKS(10))
 
 extern spi_device_handle_t	epd_spi;
 
@@ -119,8 +119,7 @@ static inline esp_err_t epd_init_reset() {
 	ESP_LOGI("epd_init_reset", "Setting Reset pin high successful\n");
 
 	// wait while busy
-	while (!gpio_get_level(EPD_BUSY))
-		vTaskDelay(pdMS_TO_TICKS(10));
+	WAIT_BUSY;
 
 	ESP_LOGI("epd_init_reset", "Send command CMD_SOFT_RESET\n");
 	// Initialization sequence: Software reset
@@ -132,8 +131,7 @@ static inline esp_err_t epd_init_reset() {
 	ESP_LOGI("epd_init_reset", "CMD_SOFT_RESET successful\n");
 
 	// wait while busy
-	while (!gpio_get_level(EPD_BUSY))
-		vTaskDelay(pdMS_TO_TICKS(10));
+	WAIT_BUSY;
 
 	ESP_LOGI("epd_init_reset", "Send command CMD_DRV_OUT_CTRL\n");
 	// Initialization sequence: Driver output control
