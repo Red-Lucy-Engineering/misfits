@@ -1,11 +1,15 @@
 #include "include/api.h"
 #include "include/fe.h"
 #include "include/graphics.h"
+#include "include/font.h"
+
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 #include <time.h>
+
+static char buf[1024];
 
 static fe_Number _fe_numarg(fe_Context *ctx, fe_Object **args) {
     return fe_tonumber(ctx, fe_nextarg(ctx, args));
@@ -159,7 +163,6 @@ static fe_Object *api_srand(fe_Context *ctx, fe_Object *args) {
 }
 
 static fe_Object *api_strlen(fe_Context *ctx, fe_Object *args) {
-    char buf[1024];
     fe_tostring(ctx, fe_nextarg(ctx, &args), buf, sizeof(buf));
     return fe_number(ctx, (fe_Number)strlen(buf));
 }
@@ -175,7 +178,6 @@ static fe_Object *api_strcat(fe_Context *ctx, fe_Object *args) {
 }
 
 static fe_Object *api_numtostr(fe_Context *ctx, fe_Object *args) {
-    char buf[64];
     fe_Number n = _fe_numarg(ctx, &args);
     if (n == (int)n)
         snprintf(buf, sizeof(buf), "%d", (int)n);
@@ -185,12 +187,11 @@ static fe_Object *api_numtostr(fe_Context *ctx, fe_Object *args) {
 }
 
 static fe_Object *api_strtonum(fe_Context *ctx, fe_Object *args) {
-    char buf[64];
     fe_tostring(ctx, fe_nextarg(ctx, &args), buf, sizeof(buf));
     return fe_number(ctx, (fe_Number)atof(buf));
 }
 
-static fe_Object *api_print(fe_Context *ctx, fe_Object *args) {
+static fe_Object *api_trace(fe_Context *ctx, fe_Object *args) {
     int first = 1;
     while (!fe_isnil(ctx, args)) {
         if (!first) putchar(' ');
@@ -250,9 +251,31 @@ static fe_Object *api_rect_fill(fe_Context *ctx, fe_Object *args) {
     return fe_bool(ctx, 1);
 }
 
+static fe_Object *api_set_font(fe_Context *ctx, fe_Object *args) {
+    fe_tostring(ctx, fe_nextarg(ctx, &args), buf, sizeof(buf));
+    fnt_load(buf);
+    return fe_bool(ctx, 1);
+}
+
+static fe_Object *api_print(fe_Context *ctx, fe_Object *args) {
+    fe_tostring(ctx, fe_nextarg(ctx, &args), buf, sizeof(buf));
+    fe_Number x = _fe_numarg(ctx, &args);
+    fe_Number y = _fe_numarg(ctx, &args);
+
+    fnt_text_t cfg = FNT_TEXT_DEFAULT;
+
+    if (!fe_isnil(ctx, args)) cfg.glyph_w        = (uint16_t)_fe_numarg(ctx, &args);
+    if (!fe_isnil(ctx, args)) cfg.glyph_h        = (uint16_t)_fe_numarg(ctx, &args);
+    if (!fe_isnil(ctx, args)) cfg.align          = (fnt_align_t)(int)_fe_numarg(ctx, &args);
+    if (!fe_isnil(ctx, args)) cfg.width          = (uint16_t)_fe_numarg(ctx, &args);
+    if (!fe_isnil(ctx, args)) cfg.spacing_factor = (float)_fe_numarg(ctx, &args);
+
+    fnt_print(buf, (uint16_t)x, (uint16_t)y, cfg);
+    return fe_bool(ctx, 1);
+}
+
 typedef struct { const char *name; fe_CFunc fn; } fe_Registry;
 typedef struct { const char *name; fe_Object *o; } fe_ValueRegistry;
-
 
 static const fe_Registry api_entries[] = {
     { "mod",            api_mod      },
@@ -286,7 +309,7 @@ static const fe_Registry api_entries[] = {
     { "cat",            api_strcat   },
     { "number2string",  api_numtostr },
     { "string2number",  api_strtonum },
-    { "println",        api_print    },
+    { "trace",          api_trace    },
     { "time",           api_time     },
 
     { "clear",          api_clear     },
@@ -294,6 +317,8 @@ static const fe_Registry api_entries[] = {
     { "blit",           api_blit      },
     { "rect_line",      api_rect_line },
     { "rect_fill",      api_rect_fill },
+    { "set_font",       api_set_font  },
+    { "print",          api_print     },
 
     { NULL, NULL }
 };
@@ -305,6 +330,10 @@ void api_register(fe_Context *ctx) {
 
     fe_set(ctx, fe_symbol(ctx, "true"),  fe_bool(ctx, 1));
     fe_set(ctx, fe_symbol(ctx, "false"), fe_bool(ctx, 0));
+
+    fe_set(ctx, fe_symbol(ctx, "ALIGN_LEFT"), fe_number(ctx, FNT_ALIGN_LEFT));
+    fe_set(ctx, fe_symbol(ctx, "ALIGN_RIGHT"), fe_number(ctx, FNT_ALIGN_RIGHT));
+    fe_set(ctx, fe_symbol(ctx, "ALIGN_CENTER"), fe_number(ctx, FNT_ALIGN_CENTER));
 
     for (const fe_Registry *e = api_entries; e->name; e++)
         fe_set(ctx, fe_symbol(ctx, e->name), fe_cfunc(ctx, e->fn));

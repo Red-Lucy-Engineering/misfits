@@ -1,5 +1,9 @@
 CC := "tcc"
 
+font:
+    python3 font/svg2mf.py font/source.svg shell/display.mf
+    echo "woopie woopie!" >> shell/display.mf
+
 run:
     cc simulator/*.c shared/*.c -lSDL3 -o sim
     MAWS_PATH=shell ./sim

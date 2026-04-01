@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="500"
+   height="500"
+   viewBox="0 0 500 500"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   sodipodi:docname="source.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="true"
+     inkscape:zoom="2.7975524"
+     inkscape:cx="187.84277"
+     inkscape:cy="129.2201"
+     inkscape:window-width="1920"
+     inkscape:window-height="1006"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       id="grid1"
+       units="px"
+       originx="0"
+       originy="0"
+       spacingx="1"
+       spacingy="1"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="16"
+       enabled="true"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <rect
+       x="64"
+       y="192"
+       width="231.64442"
+       height="293.69726"
+       id="rect1" />
+  </defs>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="M 0,32 V 4 L 8,0 16,4 V 32 16 H 0"
+       id="A"
+       sodipodi:nodetypes="ccccccc" />
+    <path
+       id="B"
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 32,0 v 16 16 h 8 l 5,-2 3,-4 v -5 l -4,-4 -6,-1 6,-1 4,-4 V 6 L 45,2 40,0 Z"
+       sodipodi:nodetypes="ccccccccccccccc" />
+    <path
+       id="3"
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 96,128 h 8 l 5,-2 3,-4 v -5 l -4,-4 -6,-1 6,-1 4,-4 v -5 l -3,-4 -5,-2 h -8"
+       sodipodi:nodetypes="ccccccccccccc" />
+    <path
+       id="C"
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="M 80,3 77,0 h -6 l -5,3 -2,8.21875 v 9.5625 L 66,29 l 5,3 h 6 l 3,-3"
+       sodipodi:nodetypes="cccccccccc" />
+    <path
+       id="D"
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 96,0 v 32 h 10 l 4,-2 2,-5 V 6 l -2,-4 -4,-2 z"
+       sodipodi:nodetypes="ccccccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 144,0 h -16 v 32 h 16 -16 V 16 h 10"
+       id="E"
+       sodipodi:nodetypes="ccccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="M 176,0 H 160 V 32 16 h 10"
+       id="F"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       id="G"
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 208,6 -4,-6 h -8 l -4,6 v 20 l 4,6 h 8 l 4,-6 V 16 h -10"
+       sodipodi:nodetypes="cccccccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="M 224,0 V 32 16 h 16 V 0 32"
+       id="H"
+       sodipodi:nodetypes="cccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="M 256,0 V 32"
+       id="I"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 272,0 h 16 -5 v 23 3 l -1,3 -3,2 -4,-1 -2,-2 -1,-5"
+       id="J"
+       sodipodi:nodetypes="cccccccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="M 320,0 304,16 320,32 304,16 V 0 32"
+       id="K"
+       sodipodi:nodetypes="cccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 336,0 v 32 h 16"
+       id="L"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="M 368,32 V 0 l 8,16 8,-15 v 31"
+       id="M"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="M 400,32 V 0 l 16,32 V 0"
+       id="N"
+       sodipodi:nodetypes="cccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 0,53 4,-5 h 8 l 4,5 v 22 l -4,5 H 4 L 0,75 Z"
+       id="O"
+       sodipodi:nodetypes="ccccccccc" />
+    <path
+       id="P"
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="M 32,48 V 64 80 64 h 12 l 4,-5 v -6 l -4,-5 z"
+       sodipodi:nodetypes="ccccccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 64,53 4,-5 h 8 l 4,5 v 22 l -1,3 1,2 -10,-16 9,14 -3,2 h -8 l -4,-5 z"
+       id="Q"
+       sodipodi:nodetypes="ccccccccccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 144,57 v -5 l -4,-4 h -8 l -4,4 v 8 l 4,4 h 8 l 4,4 v 8 l -4,4 h -8 l -4,-4 v -4"
+       id="S"
+       sodipodi:nodetypes="cccccccccccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 160,48 h 16 -8 v 32"
+       id="T"
+       sodipodi:nodetypes="cccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 192,48 v 26 l 4,6 h 8 l 4,-6 V 48"
+       id="U"
+       sodipodi:nodetypes="cccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 224,48 8,32 8,-32"
+       id="V"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 256,48 5,32 3,-20 3,20 5,-32"
+       id="W"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 288,48 16,32 -8,-16 -8,16 16,-32"
+       id="X"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 320,48 8,16 8,-16 -8,16 v 16"
+       id="Y"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 352,48 h 16 l -16,32 h 16"
+       id="path28"
+       sodipodi:nodetypes="cccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 32,112 8,-16 v 32 h -8 16"
+       id="1"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 64,108 v -6 l 3,-5 4,-1 h 2 l 4,1 3,5 v 6 l -16,20 h 16"
+       id="2"
+       sodipodi:nodetypes="cccccccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 131,96 -3,16 h 16 -3 v -16 32"
+       id="4"
+       sodipodi:nodetypes="cccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 160,116 v 6 l 3,5 4,1 h 2 l 4,-1 3,-5 V 111 H 160 V 96 h 16"
+       id="5"
+       sodipodi:nodetypes="ccccccccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 192,111 v 11 l 3,5 4,1 h 3 l 4,-2 2,-4 v -5 l -1,-4 -4,-2 h -5 l -4,2 -2,4 v -13 l 2,-6 4,-2 h 5 l 4,2 1,4"
+       id="6"
+       sodipodi:nodetypes="ccccccccccccccccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 224,96 h 16 l -16,32"
+       id="7"
+       sodipodi:nodetypes="ccc" />
+    <path
+       id="8"
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 262,96 -4,2 -2,4 v 5 l 3,4 3,1 -3,1 -3,4 v 5 l 2,4 4,2 h 4 l 4,-2 2,-4 v -5 l -3,-4 -3,-1 3,-1 3,-4 v -5 l -2,-4 -4,-2 z"
+       sodipodi:nodetypes="ccccccccccccccccccccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 304,113 v -11 l -3,-5 -4,-1 h -3 l -4,2 -2,4 v 5 l 1,4 4,2 h 5 l 4,-2 2,-4 v 13 l -2,6 -4,2 h -5 l -4,-2 -1,-4"
+       id="9"
+       sodipodi:nodetypes="ccccccccccccccccccc" />
+    <text
+       xml:space="preserve"
+       id="text1"
+       style="font-family:'Adwaita Mono';-inkscape-font-specification:'Adwaita Mono';writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect1);display:inline;fill:#000000;stroke-width:0.623622"
+       transform="translate(-56,44.690113)"><tspan
+         x="64"
+         y="202.764"
+         id="tspan2">welcome, dear traveller!
+</tspan><tspan
+         x="64"
+         y="217.764"
+         id="tspan3">
+</tspan><tspan
+         x="64"
+         y="232.764"
+         id="tspan4">i see you have gotten into the </tspan><tspan
+         x="64"
+         y="247.764"
+         id="tspan5">weeds, and want to update/change </tspan><tspan
+         x="64"
+         y="262.764"
+         id="tspan6">the font, don't you?
+</tspan><tspan
+         x="64"
+         y="277.764"
+         id="tspan7">
+</tspan><tspan
+         x="64"
+         y="292.764"
+         id="tspan8">well, you just have to care </tspan><tspan
+         x="64"
+         y="307.764"
+         id="tspan9">about the following:
+</tspan><tspan
+         x="64"
+         y="322.764"
+         id="tspan10">- no groups, these wont encode
+</tspan><tspan
+         x="64"
+         y="337.764"
+         id="tspan11">- your fonts will be shrunken or </tspan><tspan
+         x="64"
+         y="352.764"
+         id="tspan12">stretched out to fit into </tspan><tspan
+         x="64"
+         y="367.764"
+         id="tspan13">squares
+</tspan><tspan
+         x="64"
+         y="382.764"
+         id="tspan14">- no colors, they also don't </tspan><tspan
+         x="64"
+         y="397.764"
+         id="tspan15">encode
+</tspan><tspan
+         x="64"
+         y="412.764"
+         id="tspan16">- no multiple paths per glyph.
+</tspan><tspan
+         x="64"
+         y="427.764"
+         id="tspan17">- be sure to give each glyph the </tspan><tspan
+         x="64"
+         y="442.764"
+         id="tspan18">right id.</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-opacity:1"
+       d="M 13,144 5,170 H 3 l -3,2 1,3 3,1 3,-2 v -3 l -2,-1"
+       id="path1"
+       sodipodi:nodetypes="ccccccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-opacity:1"
+       d="m 16,152 1,-4 3,-3 5,-1 5,2 2,5 v 5 l -3,3 -4,2 h -3 l -1,9 h -2 l -3,1 1,4 3,1 3,-2 v -3 l -2,-1"
+       id="path2"
+       sodipodi:nodetypes="cccccccccccccccccc" />
+    <path
+       id="R"
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="M 112,80 96,64 h 12 l 4,-5 v -6 l -4,-5 H 96 v 32"
+       sodipodi:nodetypes="cccccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.623622;stroke-dasharray:none;stroke-opacity:1"
+       d="m 0,101 4,-5 h 8 L 13.521786,97.521786 14,98 l 2,3 v 22 l -4,5 H 4 l -4,-5 z"
+       id="0"
+       sodipodi:nodetypes="ccccccccccc" />
+  </g>
+</svg>

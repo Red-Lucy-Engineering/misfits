@@ -1,18 +1,33 @@
 ; It works! It's fucking working! Muahaha
 
+(set_font "display.mf")
+
 (= on_init
     (fn ()
+        (rect_line true 2 2 (- SCR_WIDTH 4) (- SCR_HEIGHT 4))
+
+        (let i 0)
+        (let y 15)
+        (while (< i 6)
+            (let s (* i 6))
+            (print "MISFITS" 0 y 8 s ALIGN_CENTER)
+            (= i (+ i 1))
+            (= y (+ y (+ s 2)))
+        )
     )
 )
 
 (= on_minute
     (fn (time)
-        (rect_line true 2 2 (- SCR_WIDTH 4) (- SCR_HEIGHT 4))
-        (line true 10 10 40 40)
+        (clear false)
+        (print "00 00" 0 80 16 32 ALIGN_CENTER)
     )
 )
 
 (= on_button
     (fn (btn)
+        (clear false)
+        (print "BUTTON PRESSED!" 0 80 8 8 ALIGN_CENTER)
+
     )
 )
