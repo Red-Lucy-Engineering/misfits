@@ -99,6 +99,8 @@ esp_err_t epd_update_display(uint8_t *buf, size_t size);
 static inline esp_err_t epd_init_reset() {
 	esp_err_t ret;
 
+	ESP_LOGI("epd_init_reset", "Set Reset GPIO pin low\n");
+
 	// Initialization sequence: Hardware reset
 	ret = gpio_set_level(EPD_RESET, GPIO_LVL_LOW);
 	if (ret) {
@@ -106,66 +108,90 @@ static inline esp_err_t epd_init_reset() {
 		return ret;
 	}
 	vTaskDelay(pdMS_TO_TICKS(10));
+	ESP_LOGI("epd_init_reset", "Setting Reset pin low successful\n");
 
+	ESP_LOGI("epd_init_reset", "Setting Reset pin high\n");
 	ret = gpio_set_level(EPD_RESET, GPIO_LVL_HIGH);
 	if (ret) {
 		ESP_LOGE("epd_init_reset", "Error pulling EPD_RESET high: %d\n", ret);
 		return ret;
 	}
+	ESP_LOGI("epd_init_reset", "Setting Reset pin high successful\n");
 
 	// wait while busy
 	while (!gpio_get_level(EPD_BUSY))
 		vTaskDelay(pdMS_TO_TICKS(10));
 
+	ESP_LOGI("epd_init_reset", "Send command CMD_SOFT_RESET\n");
 	// Initialization sequence: Software reset
 	ret = epd_send_cmd(CMD_SOFT_RESET);
 	if (ret) {
 		ESP_LOGE("epd_init_reset", "Error sending cmd 0x12: %d\n", ret);
 		return ret;
 	}
+	ESP_LOGI("epd_init_reset", "CMD_SOFT_RESET successful\n");
 
 	// wait while busy
 	while (!gpio_get_level(EPD_BUSY))
 		vTaskDelay(pdMS_TO_TICKS(10));
 
+	ESP_LOGI("epd_init_reset", "Send command CMD_DRV_OUT_CTRL\n");
 	// Initialization sequence: Driver output control
 	ret = epd_send_cmd(CMD_DRV_OUT_CTRL);
 	if (ret) {
 		ESP_LOGE("epd_init_reset", "Error sending cmd 0x01: %d\n", ret);
 		return ret;
 	}
+	ESP_LOGI("epd_init_reset", "CMD_DRV_OUT_CTRL successful\n");
+
+	ESP_LOGI("epd_init_reset", "Send data 0xC7\n");
 	// Set resolution to 200x200
 	ret = epd_send_data(0xC7);
 	if (ret) {
 		ESP_LOGE("epd_init_reset", "Error sending data for full refresh: %d\n", ret);
 		return ret;
 	}
+	ESP_LOGI("epd_init_reset", "Send data successful\n");
+	ESP_LOGI("epd_init_reset", "send zero byte\n");
 	epd_send_data(0x00);
+	ESP_LOGI("epd_init_reset", "send zero byte\n");
 	epd_send_data(0x00);
+	ESP_LOGI("epd_init_reset", "zero bytes successful\n");
 
+
+	ESP_LOGI("epd_init_reset", "send command CMD_BRD_WVFRM\n");
 	// Border Waveform Control
 	ret = epd_send_cmd(CMD_BRD_WVFRM);
 	if (ret) {
 		ESP_LOGE("epd_init_reset", "Error sending Border Waveform Control cmd: %d\n", ret);
 		return ret;
 	}
+	ESP_LOGI("epd_init_reset", "CMD_BRD_WVFRM successful\n");
+
+	ESP_LOGI("epd_init_reset", "Send data 0x05 for border behavior config\n");
 	ret = epd_send_data(0x05);
 	if (ret) {
 		ESP_LOGE("epd_init_reset", "Error sending Border behavior config: %d\n", ret);
 		return ret;
 	}
+	ESP_LOGI("epd_init_reset", "border behavior config successful\n");
 
+	ESP_LOGI("epd_init_reset", "send command CMD_TMP_SENSOR\n");
 	// Temperature sensor select
 	ret = epd_send_cmd(CMD_TMP_SENSOR);
 	if (ret) {
 		ESP_LOGE("epd_init_reset", "Error sending Temp Sensor select data: %d\n", ret);
 		return ret;
 	}
+	ESP_LOGI("epd_init_reset", "CMD_TMP_SENSOR successful\n");
+
+	ESP_LOGI("epd_init_reset", "send data 0x80 for selecting internal temp sensor\n");
 	ret = epd_send_data(0x80);
 	if (ret) {
 		ESP_LOGE("epd_init_reset", "Error selecting internal Temp Sensor: %d\n", ret);
 		return ret;
 	}
+	ESP_LOGI("epd_init_reset", "sending data successful, reset routine successful\n");
 
 	return ret;
 }
