@@ -48,10 +48,12 @@ esp_err_t epd_update_display(uint8_t *buf, size_t size) {
 		if (ret) {
 			ESP_LOGE("epd_update_display", "Error sending data byte %d to display: %d\n",
 				 i, ret);
-			return ret;
+			break;
 		}
 		ESP_LOGI("epd_update_display", "byte %d sent successful\n", i);
 	}
+	if (ret)
+		return ret;
 	WAIT_BUSY;
 
 	ESP_LOGI("epd_update_display", "sending command CMD_UPDT_CTRL2\n");
