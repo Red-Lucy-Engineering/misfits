@@ -14,9 +14,10 @@ spi_device_handle_t epd_spi;
  * This function performs the following three steps:
  *	1. Send command CMD_WRITE_RAM
  * 	2. Writes the user-defined data to display RAM
- * 	3. Send command CMD_UPDT_CTRL2
- * 	4. Send data 0xC7 for full display refresh
- * 	5. Send command CMD_MASTER_ACT to start physical refresh
+ * 	3. Send command CMD_SOFT_START
+ * 	4. Send command CMD_UPDT_CTRL2
+ * 	5. Send data 0xC7 for full display refresh
+ * 	6. Send command CMD_MASTER_ACT to start physical refresh
  *
  *
  * Return: Non-zero code on error

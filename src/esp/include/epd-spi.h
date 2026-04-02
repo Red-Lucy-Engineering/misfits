@@ -28,6 +28,7 @@
 #define CMD_UPDT_CTRL2	0x22
 #define CMD_MASTER_ACT	0x20
 #define CMD_WRITE_RAM	0x24
+#define CMD_SOFT_START	0x0C
 
 
 // 4MHz
