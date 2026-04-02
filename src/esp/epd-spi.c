@@ -42,21 +42,33 @@ esp_err_t epd_update_display(uint8_t *buf, size_t size) {
 	}
 	ESP_LOGI("epd_update_display", "command successful\n");
 
+	ESP_LOGI("epd_update_display", "Sending buffer\n");
 	for (size_t i = 0; i < size; i++) {
-		ESP_LOGI("epd_update_display", "sending byte %d as data\n",
-			  i);
+		//ESP_LOGI("epd_update_display", "sending byte %d as data\n",
+		//	  i);
 		ret = epd_send_data(buf[i]);
-		vTaskDelay(pdMS_TO_TICKS(10));
+		//vTaskDelay(pdMS_TO_TICKS(10));
 		if (ret) {
 			ESP_LOGE("epd_update_display", "Error sending data byte %d to display: %d\n",
 				 i, ret);
 			break;
 		}
-		ESP_LOGI("epd_update_display", "byte %d sent successful\n", i);
+		//ESP_LOGI("epd_update_display", "byte %d sent successful\n", i);
 	}
 	if (ret)
 		return ret;
 	WAIT_BUSY;
+
+	ESP_LOGI("epd_update_display", "Buffer data sent\n");
+
+	ESP_LOGI("epd_update_display", "sending command CMD_SOFT_START\n");
+	ret = epd_send_cmd(CMD_SOFT_START);
+	if (ret) {
+		ESP_LOGE("epd_update_display", "Error sending softstart command: %d\n", ret);
+		return ret;
+	}
+	ESP_LOGI("epd_update_display", "command successful\n");
+
 
 	ESP_LOGI("epd_update_display", "sending command CMD_UPDT_CTRL2\n");
 	ret = epd_send_cmd(CMD_UPDT_CTRL2);
@@ -81,6 +93,8 @@ esp_err_t epd_update_display(uint8_t *buf, size_t size) {
 		ESP_LOGE("epd_udpate_display", "Error sending master activation command: %d\n", ret);
 		return ret;
 	}
+	// TODO: figure out why the fuck the WAIT_BUSY doesnt work
+	vTaskDelay(pdMS_TO_TICKS(100));
 	WAIT_BUSY;
 	ESP_LOGI("epd_update_display", "sending command successful\n");
 
