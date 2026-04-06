@@ -1,0 +1,3 @@
+*.lck
+.history
+.history/*
