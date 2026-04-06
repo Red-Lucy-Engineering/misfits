@@ -27,32 +27,32 @@ esp_err_t timer_init() {
 	esp_err_t ret = 0;
 	ret = gptimer_new_timer(&timer_config, &gptimer);
 	if (ret) {
-		ESP_LOGE("timer_init", "Error %d: Couldn't create timer instance\n", ret);
+		ESP_LOGE("timer_init", "Error %d: Couldn't create timer instance", ret);
 		return ret;
 	}
 
 	ret = gptimer_set_alarm_action(gptimer, &alarm_config);
 	if (ret) {
-		ESP_LOGE("timer_init", "Error %d: Couldn't set timer alarm action\n", ret);
+		ESP_LOGE("timer_init", "Error %d: Couldn't set timer alarm action", ret);
 		return ret;
 	}
 
 	ret = gptimer_register_event_callbacks(gptimer, &cbs, NULL);
 	if (ret) {
-		ESP_LOGE("timer_init", "Error %d: Couldn't register timer callback\n", ret);
+		ESP_LOGE("timer_init", "Error %d: Couldn't register timer callback", ret);
 		return ret;
 	}
 
 
 	ret = gptimer_enable(gptimer);
 	if (ret) {
-		ESP_LOGE("timer_init", "Error %d: Couldn't enable timer\n", ret);
+		ESP_LOGE("timer_init", "Error %d: Couldn't enable timer", ret);
 		return ret;
 	}
 
 	ret = gptimer_start(gptimer);
 	if (ret) {
-		ESP_LOGE("timer_init", "Error %d: Couldn't start timer\n", ret);
+		ESP_LOGE("timer_init", "Error %d: Couldn't start timer", ret);
 		return ret;
 	}
 

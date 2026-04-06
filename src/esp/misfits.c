@@ -7,6 +7,7 @@
 
 #include "epd-spi.h"
 #include "common-defs.h"
+#include "freertos/projdefs.h"
 #include "graphics.h"
 #include "watch-timer.h"
 
@@ -16,8 +17,12 @@
 void app_main(void)
 {
 	esp_err_t ret;
+
+	ESP_LOGI("misfits.c", "Arrived at app_main()");
+
+	// Wait 10ms after Power On
+	vTaskDelay(pdMS_TO_TICKS(10));
 	
-	ESP_LOGI("misfits.c", "Arrived at app_main()\n");
 	// initialize ePaper display
 	ret = epd_init();
 	if (ret) {
@@ -25,7 +30,7 @@ void app_main(void)
 		goto err;
 	}
 
-	ESP_LOGI("misfits.c", "ePaper display initialized\n");
+	ESP_LOGI("misfits.c", "ePaper display initialized");
 
 	/*
 	// Initialize timer for time-keeping
@@ -36,28 +41,28 @@ void app_main(void)
 	}
 	*/
 
-	ESP_LOGI("misfits.c", "setting local buffer to black for display\n");
-	gra_clear((char) 0xFF);
-	ESP_LOGI("misfits.c", "Updating display\n");
+	ESP_LOGI("misfits.c", "setting local buffer to black for display");
+	gra_clear((char) 0x00);
+	ESP_LOGI("misfits.c", "Updating display");
 	ret = epd_update_display(gra_screen_buffer, 5000);
 	if (ret) {
-		ESP_LOGE("misfits.c", "Error %d: couldn't update display\n");
+		ESP_LOGE("misfits.c", "Error %d: couldn't update display");
 		goto err;
 	}
-	ESP_LOGI("misfits.c", "Display successfully updated\n");
+	ESP_LOGI("misfits.c", "Display successfully updated");
 	vTaskDelay(pdMS_TO_TICKS(1000));
 
-	ESP_LOGI("misfits.c", "setting local buffer to white for display\n");
-	gra_clear((char) 0x00);
+	ESP_LOGI("misfits.c", "setting local buffer to white for display");
+	gra_clear((char) 0xFF);
 	ret = epd_update_display(gra_screen_buffer, 5000);
 	if (ret) {
-		ESP_LOGE("misfits.c", "Error %d: couldn't update display\n");
+		ESP_LOGE("misfits.c", "Error %d: couldn't update display");
 		goto err;
 	}
-	ESP_LOGI("misfits.c", "display successfully updated\n");
+	ESP_LOGI("misfits.c", "display successfully updated");
 
 
 err:
-	ESP_LOGI("misfits.c", "performing restart now...\n");
+	ESP_LOGI("misfits.c", "performing restart now...");
 	esp_restart();
 }
