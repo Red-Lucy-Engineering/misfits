@@ -4,4 +4,4 @@
 
 Open hardware e-Paper based smartwatch, fully user programmable.
 
-
+If you wish to contribute, make sure to read [CONTRIBUTE.md](CONTRIBUTE.md)

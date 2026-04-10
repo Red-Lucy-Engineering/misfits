@@ -1,89 +1,57 @@
----
-title: Contributor Policy Agreement
-version: 1.1
----
+# How to contribute
 
-# Contributor Policy Agreement.
-> Version 1.1
+If you're reading this: thank you for considering to contribute. It means a lot
+to us!
 
-This document serves as an agreement between contributors and
-Starlight Network maintainers to set rules and policies around how to
-contribute.
+## General
 
-**TL;DR:**
-- We do **not** take ownership of your code when you contribute. It
-  must be licensed the same as the upstream project, but we do not
-  take over the copyright to that code.
-- LLM Coding Agents are not allowed.
+The very fist thing you need to do is read the
+[Contribution Policy Agreement](CONTRIBUTION-POLICY-AGREEMENT.md) very
+carefully. Once you did and keep all these guidelines in mind, you're good to
+go! 
 
-## Code must be 100% Person-Written.
+There are some more specific considerations for contributing to the software
+for misfits, which will be outlined below.
 
-We do not accept LLM contributions. Period.
+## Software
 
-No, we don't care that "it'll replace us" or that "it's the future."
+### Coding Style
 
-## You must adhere to the Developer Certificate of Origin
+Generally speaking, if you know the Linux Kernel Coding Style, you're already
+good. If not, here's a TL;DR
 
-The DCO is as follows:
+1. 8-Space-long tabs for indentation. 
+2. Try to keep an 80-column limit per line. If it's a little bit over, and 
+   splitting it into multiple lines makes it harder to read, it's okay to break
+   this rule.
+3. K&R Coding style. Writing C like it's C# is just *yuck*
+4. No more than 3 indentations deep (when it comes to logic, it doesn't matter
+   that much with structs)
+5. Use a space after most keywords (if, switch, case, for, do, while)
+6. Global variables and functions (which should only be used if you *really* 
+   need them) need have descriptive names. A function that counts the active
+   amount of users should be called "count_active_users()" or similar.
+7. Do not encode the datatype of the function in to the name.
+8. Local Variable names should be short and to the point, e.g. a return value
+   should be called "ret", not "return_value". Similar, an index for
+   a for-loop should be called "i", not "loop_counter".
+9. Be careful with typedefs. There should always be a good reason for using it.
+   See [Linux Kernel Coding Style](https://www.kernel.org/doc/html/v4.10/process/coding-style.html#typedefs)
+   for acceptable uses of typedefs.
+10. Functions should be short and do just one thing. They should fit on one or
+    two screenfuls of text (no, your vertical ultrawide doesn't count). It should
+    do one thing and one thing well.
+11. If you have a fairly simple function that just has one long case-statement,
+    that's of course fine, it still does just one thing and is *logically* short.
+12. If your function has more than 5-10 local variables, you might need to rethink
+    if you should split that into multiple functions.
+13. You can centralise exiting your functions using goto statements. Refer to
+    the [Linux Kernel Coding Style](https://www.kernel.org/doc/html/v4.10/process/coding-style.html#centralized-exiting-of-functions)
+    once again for examples.
+14. Don't over-comment.
+15. In comments, explain *what* your code does, not *how*. Avoid comment blocks
+    inside functions, if you need to do this, you might want to revisit point 10.
+16. Be careful with macros and conditional compilation.
+17. Macros should be named in all-caps (e.g. FOO(x) instead of foo(x))
+18. If possible, avoid conditional compilations using macros. They are the devil.
 
-```
-Developer Certificate of Origin
-Version 1.1
-
-Copyright (C) 2004, 2006 The Linux Foundation and its contributors.
-
-Everyone is permitted to copy and distribute verbatim copies of this
-license document, but changing it is not allowed.
-
-
-Developer's Certificate of Origin 1.1
-
-By making a contribution to this project, I certify that:
-
-(a) The contribution was created in whole or in part by me and I
-    have the right to submit it under the open source license
-    indicated in the file; or
-
-(b) The contribution is based upon previous work that, to the best
-    of my knowledge, is covered under an appropriate open source
-    license and I have the right under that license to submit that
-    work with modifications, whether created in whole or in part
-    by me, under the same open source license (unless I am
-    permitted to submit under a different license), as indicated
-    in the file; or
-
-(c) The contribution was provided directly to me by some other
-    person who certified (a), (b) or (c) and I have not modified
-    it.
-
-(d) I understand and agree that this project and the contribution
-    are public and that a record of the contribution (including all
-    personal information I submit with it, including my sign-off) is
-    maintained indefinitely and may be redistributed consistent with
-    this project or the open source license(s) involved.
-
-```
-
-Of course, `created in whole or in part by me` does not count AI
-Coding Assistants.
-
-## Licensing and Copyright
-
-By signing the CPA, you confirm that this code is yours, not ours.
-
-## This is a living document.
-
-This document may change in the future. It is versioned, and signing
-it means you agree to the then-signed version of the document, not the
-latest one.
-
-## Signing the CPA
-
-To sign the CPA, contribute as normally, making sure to sign-off your
-PR with something like:
-
-`I, <insert name here>, hereby agree to the Terms outlined under the
-Contribution Policy Agreement.`
-
-Signing the CPA automatically means you agree to every term described
-in this document, including the Developer Certificate of Origin.
