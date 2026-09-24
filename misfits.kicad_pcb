@@ -25580,6 +25580,17 @@
 			)
 		)
 	)
+	(gr_rect
+		(start 155.92 106.34)
+		(end 165.92 108.34)
+		(stroke
+			(width 0.1524)
+			(type default)
+		)
+		(fill yes)
+		(layer "F.SilkS")
+		(uuid "4e63d5dd-059c-4902-91bb-363d91f1670d")
+	)
 	(gr_poly
 		(pts
 			(xy 156.973929 92.355059) (xy 155.386998 92.896886) (xy 155.323101 92.264316) (xy 156.886415 92.129673)
@@ -28154,7 +28165,7 @@
 		(uuid "a8ba67d5-c673-424c-9cd6-f49b8bbeabce")
 	)
 	(via
-		(at 165.2 107.6)
+		(at 167.23 107.56)
 		(size 0.6858)
 		(drill 0.3302)
 		(layers "F.Cu" "B.Cu")
