@@ -5,11 +5,11 @@
 	(uuid "23a5639a-52a5-4ebc-85ce-b3a55850a6cf")
 	(paper "A4")
 	(title_block
-		(title "\"Misfits\"")
-		(date "2026-03-14")
-		(rev "2")
-		(company "Red lucy")
-		(comment 1 "redlucy404.de")
+		(title "${TITLE}")
+		(date "${CURRENT_DATE}")
+		(rev "${REVISION}")
+		(company "${AUTHOR}")
+		(comment 1 "${COMMENT1}")
 	)
 	(lib_symbols
 		(symbol "2N7002K-7:2N7002K-7"

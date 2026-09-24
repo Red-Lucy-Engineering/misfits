@@ -370,7 +370,7 @@
       "internal_id": "",
       "mfg": "",
       "mpn": "",
-      "sch_revision": "2"
+      "sch_revision": "${REVISION}"
     },
     "layer_pairs": [],
     "layer_presets": [],
@@ -852,7 +852,12 @@
       "misfits"
     ]
   ],
-  "text_variables": {},
+  "text_variables": {
+    "AUTHOR": "Red Lucy Engineering",
+    "COMMENT1": "https://engineering.redlucy404.de",
+    "REVISION": "3",
+    "TITLE": "\"misfits\" ESP32-S3-Mini based OSHW smartwatch"
+  },
   "tuning_profiles": {
     "meta": {
       "version": 0
