@@ -12815,18 +12815,6 @@
 				(justify bottom)
 			)
 		)
-		(property "MP" "S2B-PH-K-S(LF)(SN)"
-			(at 110.49 71.12 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-			)
-		)
 		(property "Description_1" "Connector Header Through Hole, Right Angle 2 position"
 			(at 110.49 71.12 0)
 			(hide yes)
@@ -12861,6 +12849,17 @@
 					(size 1.27 1.27)
 				)
 				(justify bottom)
+			)
+		)
+		(property "MPN" "C173752"
+			(at 110.49 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "2"
@@ -14400,6 +14399,17 @@
 				(justify bottom)
 			)
 		)
+		(property "MPN" "C79150"
+			(at 172.72 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1_1"
 			(uuid "7aaf569c-0a28-4140-8da2-9ae370e97b6d")
 		)
@@ -14886,6 +14896,17 @@
 				(justify bottom)
 			)
 		)
+		(property "MPN" "C79150"
+			(at 259.08 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1_1"
 			(uuid "5832fab5-ca60-4f4d-9a51-4a41f22680a9")
 		)
@@ -15042,7 +15063,7 @@
 				(justify bottom)
 			)
 		)
-		(property "MP" "TLV75801PDRVR"
+		(property "MPN" "C2876308"
 			(at 57.15 109.22 0)
 			(hide yes)
 			(show_name no)
@@ -15051,7 +15072,6 @@
 				(font
 					(size 1.27 1.27)
 				)
-				(justify bottom)
 			)
 		)
 		(pin "5"
@@ -15243,18 +15263,6 @@
 				(justify bottom)
 			)
 		)
-		(property "MP" "ESP32-S3-MINI-1-N8"
-			(at 228.6 55.88 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-			)
-		)
 		(property "Description_1" "Bluetooth, WiFi 802.11b/g/n, Bluetooth v5.0 Transceiver Module 2.4GHz PCB Trace Surface Mount"
 			(at 228.6 55.88 0)
 			(hide yes)
@@ -15289,6 +15297,17 @@
 					(size 1.27 1.27)
 				)
 				(justify bottom)
+			)
+		)
+		(property "MP" "C2913206"
+			(at 228.6 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "12"
@@ -15723,18 +15742,6 @@
 				(justify bottom)
 			)
 		)
-		(property "MP" "BQ24040DSQR"
-			(at 67.31 41.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-			)
-		)
 		(property "Availability" "In Stock"
 			(at 67.31 41.91 0)
 			(hide yes)
@@ -15757,6 +15764,17 @@
 					(size 1.27 1.27)
 				)
 				(justify bottom)
+			)
+		)
+		(property "MPN" "C81080"
+			(at 67.31 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "8"
@@ -16148,6 +16166,17 @@
 					(size 1.27 1.27)
 				)
 				(justify bottom)
+			)
+		)
+		(property "MPN" "C324726"
+			(at 269.24 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "21"
@@ -16815,6 +16844,17 @@
 					(size 1.27 1.27)
 				)
 				(justify bottom)
+			)
+		)
+		(property "MPN" "C79150"
+			(at 172.72 30.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1_1"
@@ -17952,6 +17992,17 @@
 					(size 1.27 1.27)
 				)
 				(justify bottom)
+			)
+		)
+		(property "MPN" "C79150"
+			(at 259.08 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1_1"
@@ -22326,18 +22377,6 @@
 				(justify bottom)
 			)
 		)
-		(property "MP" "GT-USB-7010B"
-			(at 46.99 170.18 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-			)
-		)
 		(property "Description_1" "Horizontal Type-C 16P Female SMT"
 			(at 46.99 170.18 0)
 			(hide yes)
@@ -22372,6 +22411,17 @@
 					(size 1.27 1.27)
 				)
 				(justify bottom)
+			)
+		)
+		(property "MPN" "C963217"
+			(at 46.99 170.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "A7"
@@ -25376,7 +25426,7 @@
 				(justify bottom)
 			)
 		)
-		(property "MP" "744043470"
+		(property "MPN" "C2046935"
 			(at 160.02 109.22 0)
 			(hide yes)
 			(show_name no)
@@ -25673,6 +25723,17 @@
 					(size 1.27 1.27)
 				)
 				(justify bottom)
+			)
+		)
+		(property "MPN" "C328026"
+			(at 115.57 172.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "4"
