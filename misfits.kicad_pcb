@@ -94,7 +94,6 @@
 			(dielectric_constraints no)
 		)
 		(pad_to_mask_clearance 0)
-		(solder_mask_min_width 0.1016)
 		(allow_soldermask_bridges_in_footprints yes)
 		(tenting
 			(front yes)
@@ -398,155 +397,12 @@
 				)
 			)
 		)
-		(property "MF" "Panasonic"
-			(at 0 0 90)
+		(property "MPN" "C79150"
+			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "e769b497-38df-4c0d-9eb9-a3d04289a2ae")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MAXIMUM_PACKAGE_HEIGHT" "1.45mm"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "8aecaf34-47cd-4d6c-a6fe-1a34cc0ae5e1")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Package" "None"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "4eaeef8c-9024-4ecb-bbdb-7e5e47df69e2")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Price" "None"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "9e41ad4d-bb55-4abf-97b7-7ef692b03e9c")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Check_prices" "https://www.snapeda.com/parts/EVPAEDB2A/Panasonic/view-part/?ref=eda"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "b9d1b936-8a64-44e7-b990-a5a99aeb0e2d")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "STANDARD" "Manufacturer recommendations"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "0889ba68-4452-4868-af0f-fb760ba28cc4")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "PARTREV" ""
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "4d5f4b08-d251-4b45-b8aa-3b286073b4d0")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "SnapEDA_Link" "https://www.snapeda.com/parts/EVPAEDB2A/Panasonic/view-part/?ref=snap"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "146a16ed-fbcf-46f2-a22b-8cab61b687b1")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MP" "EVPAEDB2A"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "a76b1d68-937b-4348-b518-0b7985cb274b")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Description_1" "Switch Tactile N.O. SPST Rectangular Button J-Bend 0.02A 15VDC 200000Cycles 3N SMD T/R"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "ffe77af1-ab6d-4949-8489-8866b5d4611f")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Availability" "In Stock"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "86a6266e-d077-4686-8892-c05bc07218d6")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MANUFACTURER" "Panasonic"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "6de6761d-8eb0-461f-939b-0bfef7693b17")
+			(uuid "4896e7bb-5125-4468-a37e-1424ab5f3810")
 			(effects
 				(font
 					(size 1 1)
@@ -1039,7 +895,7 @@
 		(uuid "2654cf38-1556-42c1-be76-4a99bae7815e")
 		(at 131.14 103.44 -90)
 		(property "Reference" "S3"
-			(at -0.73 -3.57 180)
+			(at -0.73 -3.57 0)
 			(layer "F.SilkS" knockout)
 			(uuid "f52d427b-5fe0-40e6-b61f-6394a6a642be")
 			(effects
@@ -1287,155 +1143,12 @@
 				)
 			)
 		)
-		(property "MF" "Panasonic"
-			(at 0 0 270)
+		(property "MPN" "C79150"
+			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "3010dfa4-6ec0-493e-b209-4d3edf7cb569")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MAXIMUM_PACKAGE_HEIGHT" "1.45mm"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "627f1707-e9e5-4715-8fd1-1ed5d35d5221")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Package" "None"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "9a663ebb-35b5-4313-836d-16061dc371a8")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Price" "None"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "0a16aeac-4a18-4bcd-a360-c482007f5f64")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Check_prices" "https://www.snapeda.com/parts/EVPAEDB2A/Panasonic/view-part/?ref=eda"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "e36cd406-0af3-4e67-a68d-3f6b383cb081")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "STANDARD" "Manufacturer recommendations"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "2e15921a-d4b3-43d1-b9da-87fcd9fce07a")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "PARTREV" ""
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "6b023431-42eb-4d3e-979d-de446c8840e7")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "SnapEDA_Link" "https://www.snapeda.com/parts/EVPAEDB2A/Panasonic/view-part/?ref=snap"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "c6a4cca4-26ff-49c9-8acf-395aae6db5d5")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MP" "EVPAEDB2A"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "0ef50c5a-4c79-4ada-bd45-8fab34867b0f")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Description_1" "Switch Tactile N.O. SPST Rectangular Button J-Bend 0.02A 15VDC 200000Cycles 3N SMD T/R"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "fcd299a3-b407-49a7-b659-6f5a87c9761f")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Availability" "In Stock"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "dcbf848d-f676-4cb4-aa9b-ba2361d1895e")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MANUFACTURER" "Panasonic"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "5d231653-db2d-4c51-b84d-20314122fe63")
+			(uuid "0ab798d7-5e2d-40ad-bd1c-584c0bad33f3")
 			(effects
 				(font
 					(size 1 1)
@@ -3425,194 +3138,12 @@
 				)
 			)
 		)
-		(property "MF" "onsemi"
-			(at 0 0 90)
+		(property "MPN" "C328026"
+			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "fddbebe6-99e3-4ee6-9ec8-1115a2a8d241")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MAXIMUM_PACKAGE_HEIGHT" "0.55mm"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "ccf56ddb-43af-4a0b-b8f6-7cf39c083691")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "CREATOR" "ASHISH"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "e3bda9b5-1a18-4feb-baeb-755042d1d761")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Price" "None"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "4b3dd224-b9bc-49a5-b65d-79cc87e26a48")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Package" "UDFN-10 ON Semiconductor"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "725e4458-8b3f-4b6e-98de-477e56c05387")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Check_prices" "https://www.snapeda.com/parts/ESD7104MUTAG/Onsemi/view-part/?ref=eda"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "3785d59d-0e5d-4e1d-a9ca-9948952f8d76")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "DUPLICATE" "SZESD7104MUTAG"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "e9191aa3-25c6-46d5-8ef8-9dd0590f1303")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "STANDARD" "Manufacturer Recommendations"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "bb06f6bb-50b3-4d87-9287-fdd91026a27e")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "PARTREV" "7"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "fd8376fb-74d4-466f-8775-88c9003db023")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "VERIFIER" ""
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "9b8dfe6c-64ab-4433-a056-e9128fa7ce93")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "SnapEDA_Link" "https://www.snapeda.com/parts/ESD7104MUTAG/Onsemi/view-part/?ref=snap"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "24118617-3bf5-4561-a5c4-2c0d249cde1c")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MP" "ESD7104MUTAG"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "5438ca36-1058-4d3d-8869-85b3659acca1")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Description_1" "10V Clamp 1A (8/20µs) Ipp Tvs Diode Surface Mount 10-UDFN (2.5x1)"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "c4234cab-75b6-4e69-a3d9-dd8ead0377c0")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Availability" "In Stock"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "03c0db9c-ae0b-4e55-ac87-0badb32f25f6")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MANUFACTURER" "Onsemi"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "74c22903-15d5-427f-b7e4-15d3c7050997")
+			(uuid "94562ef5-96f3-4194-80f5-d8c97c72d683")
 			(effects
 				(font
 					(size 1 1)
@@ -3969,7 +3500,7 @@
 		(uuid "6729459e-2a56-45e8-bb9d-97ca3a10c945")
 		(at 149.15 88.76 -90)
 		(property "Reference" "U1"
-			(at -7.23 -14.08 180)
+			(at -7.23 -14.08 0)
 			(layer "F.SilkS" knockout)
 			(uuid "9aa0c5a4-b94c-4262-9534-54122c252b0d")
 			(effects
@@ -4369,155 +3900,12 @@
 				)
 			)
 		)
-		(property "MF" "Espressif Systems"
-			(at 0 0 270)
+		(property "MPN" "C2913206"
+			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "c16be6bc-8bb4-4ff3-882b-777af9acc996")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MAXIMUM_PACKAGE_HEIGHT" "2.55mm"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "4c869f82-318a-4a47-b951-47b5e4516a76")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Package" "None"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "cae96d57-9669-453d-8202-0c6c8c7ab9e5")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Price" "None"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "4e2a5006-9cbe-4732-a0ae-5a36bcae985c")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Check_prices" "https://www.snapeda.com/parts/ESP32-S3-MINI-1-N8/Espressif+Systems/view-part/?ref=eda"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "2f62bbea-75c3-4060-8544-297e1a1c0a3a")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "STANDARD" "Manufacturer Recommendations"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "3382b828-ec22-4b0f-8e25-735ec76a8ce2")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "PARTREV" "v0.6"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "bba16e9d-5a7d-4b52-b674-59bfe288fdd2")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "SnapEDA_Link" "https://www.snapeda.com/parts/ESP32-S3-MINI-1-N8/Espressif+Systems/view-part/?ref=snap"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "7fe9e62b-24a4-432c-84cf-14dac133c610")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MP" "ESP32-S3-MINI-1-N8"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "47e65faf-5d86-4de7-ae68-01a05ee58c2a")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Description_1" "Bluetooth, WiFi 802.11b/g/n, Bluetooth v5.0 Transceiver Module 2.4GHz PCB Trace Surface Mount"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "42eaaf18-ee11-4362-873a-a92060d8c726")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Availability" "In Stock"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "f01ca720-e309-4af9-bb8d-24db7060beed")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MANUFACTURER" "Espressif"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "e9b850ed-1c9e-46e2-8212-a972e8ac4e31")
+			(uuid "e03144fd-8d16-41f2-b5a6-4c3e2c7e66f3")
 			(effects
 				(font
 					(size 1 1)
@@ -6798,7 +6186,7 @@
 		(uuid "a0254a08-90b7-4ec5-b697-e9116fffab09")
 		(at 131.15 85.67 -90)
 		(property "Reference" "S2"
-			(at 1.32 -3.08 180)
+			(at 1.32 -3.08 0)
 			(layer "F.SilkS" knockout)
 			(uuid "c6525dce-b84a-4d73-94ef-002b6a202cb6")
 			(effects
@@ -6979,155 +6367,12 @@
 				)
 			)
 		)
-		(property "MF" "Panasonic"
-			(at 0 0 270)
+		(property "MPN" "C79150"
+			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "92a35a0e-dd01-4676-a813-cfc5d50fcc5e")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MAXIMUM_PACKAGE_HEIGHT" "1.45mm"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "b822fc06-6716-4071-9303-0b8d64efb9d7")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Package" "None"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "11e5d06c-f5ce-4bbc-95cc-14a525376dff")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Price" "None"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "535ef582-65b5-4952-ad0a-164d56eebe38")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Check_prices" "https://www.snapeda.com/parts/EVPAEDB2A/Panasonic/view-part/?ref=eda"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "94d87dc1-02a4-42e0-94f4-37a7c1e31468")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "STANDARD" "Manufacturer recommendations"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "c1505d67-a4a8-4da3-b7aa-1a895b2d4f64")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "PARTREV" ""
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "7011bc5f-d538-4c71-9e97-aaa24a5d4895")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "SnapEDA_Link" "https://www.snapeda.com/parts/EVPAEDB2A/Panasonic/view-part/?ref=snap"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "823769ab-65d8-4322-b0ab-8b46772cb620")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MP" "EVPAEDB2A"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "eae1fc0d-245c-4b4f-8d09-c8368d174bac")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Description_1" "Switch Tactile N.O. SPST Rectangular Button J-Bend 0.02A 15VDC 200000Cycles 3N SMD T/R"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "dc9ec582-ec87-4678-97a9-83d07db56c5a")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Availability" "In Stock"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "b0217704-6401-4346-91ea-d80b5f33b95b")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MANUFACTURER" "Panasonic"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "f44924e3-d7e9-427d-a62c-4b4fd4634b9e")
+			(uuid "6091db2a-da72-4202-8c7a-bea645b20efc")
 			(effects
 				(font
 					(size 1 1)
@@ -9041,155 +8286,12 @@
 				)
 			)
 		)
-		(property "MF" "Panasonic"
-			(at 0 0 90)
+		(property "MPN" "C79150"
+			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "e262cca5-cf08-40d6-9018-840b30762c86")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MAXIMUM_PACKAGE_HEIGHT" "1.45mm"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "b4ca2460-c228-46e5-b05a-691e89d9f21c")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Package" "None"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "dea84fd7-a291-42d6-88e0-b419ad08bb05")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Price" "None"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "c7da1391-1309-433d-bf6e-4cb730702a75")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Check_prices" "https://www.snapeda.com/parts/EVPAEDB2A/Panasonic/view-part/?ref=eda"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "9894c6b4-ffc4-409d-8bdd-a1066b06f923")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "STANDARD" "Manufacturer recommendations"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "4dfce055-eb6e-47fd-a5e7-60132518bbb1")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "PARTREV" ""
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "a4d456c6-ff28-41e3-8eb0-c8a59e2bcda3")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "SnapEDA_Link" "https://www.snapeda.com/parts/EVPAEDB2A/Panasonic/view-part/?ref=snap"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "97d78147-dac5-4bc9-9574-44d86ac45281")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MP" "EVPAEDB2A"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "261d04db-d2a7-454b-a0e7-0687fb0093d5")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Description_1" "Switch Tactile N.O. SPST Rectangular Button J-Bend 0.02A 15VDC 200000Cycles 3N SMD T/R"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "027b4932-fd43-4904-958c-1332e80228d7")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Availability" "In Stock"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "a354495f-363e-46fc-a2a5-03be2d16c978")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MANUFACTURER" "Panasonic"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "35e96c31-14cd-41a0-9eb4-114b996371e5")
+			(uuid "0367361a-7068-41fc-bb30-a40ad92debc0")
 			(effects
 				(font
 					(size 1 1)
@@ -10588,155 +9690,12 @@
 				)
 			)
 		)
-		(property "MF" "G-switch"
+		(property "MPN" "C963217"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "f67ce853-5187-444c-bb56-6d1d5a0d5ef6")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MAXIMUM_PACKAGE_HEIGHT" "3.16mm"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "c1207245-ce50-4aaa-8ed1-449343059787")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Package" "None"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "9316f899-7ddc-41d2-925b-55332c478625")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Price" "None"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "08127073-7ee4-4913-9af4-eaee9182d301")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Check_prices" "https://www.snapeda.com/parts/GT-USB-7010B/G-switch/view-part/?ref=eda"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "51717220-e4e8-46ad-8ee5-4cf2e970ad4c")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "STANDARD" "Manufacturer Recommendations"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "ca019049-78f9-46f2-a3ef-c51b3d2d3dfa")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "PARTREV" "A0"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "13f64c8d-a462-4337-884c-d1e6c347fe19")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "SnapEDA_Link" "https://www.snapeda.com/parts/GT-USB-7010B/G-switch/view-part/?ref=snap"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "8a5836bc-4390-4c70-b696-d5444fb591ba")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MP" "GT-USB-7010B"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "3aa3020e-5f5a-462c-b2fd-10cd8a1b409e")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Description_1" "Horizontal Type-C 16P Female SMT"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "a9d19c72-bc20-4eb3-b77d-f3d5d4080ee4")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Availability" "Not in stock"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "077d4ba0-fcb1-4fd4-8574-da90b5be24c5")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MANUFACTURER" "G-switch"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "1b73b8cd-e232-429e-ac15-5deed435be34")
+			(uuid "757960dc-ca39-4f2f-b58e-588758f7f928")
 			(effects
 				(font
 					(size 1 1)
@@ -13648,152 +12607,12 @@
 				(justify mirror)
 			)
 		)
-		(property "MF" "Diodes Inc."
+		(property "MPN" "C124188"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "00f3de9f-146d-4b87-8b09-fee8e5aa4754")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Description_1" "Diode Schottky 30V 0.5A 2Pin SOD123 | Diodes Inc B0530W-7-F"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "b6b7112c-2bef-4368-8cc8-45f50d3d6ecf")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Package" "SOD-123 Fairchild Semiconductor"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "240cbc24-8cca-4716-81c1-0dba4c0dc05a")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Price" "None"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "0b36ff55-94f3-4fe7-9a6f-cfa3c95c8a31")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Check_prices" "https://www.snapeda.com/parts/B0530W-7-F/Diodes+Inc./view-part/?ref=eda"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "4bfcbf60-7c2a-41a0-9406-b4a23a27114c")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "STANDARD" "IPC-7351B"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "7b6788da-f78b-417f-bec4-73738d5cd220")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "PARTREV" "9-2"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "d6d3fa29-0cd9-4208-a2db-4f90985c49e9")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "SnapEDA_Link" "https://www.snapeda.com/parts/B0530W-7-F/Diodes+Inc./view-part/?ref=snap"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "8e1c904f-7e3e-4720-bb4c-39239ad3cd29")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "MP" "B0530W-7-F"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "28e72cab-b7e4-4262-b934-5249be5a2ce1")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Availability" "In Stock"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "ed1650f1-6bd0-496c-81c9-03206246c85b")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "MANUFACTURER" "DIODES"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "b91ef07a-5ff5-48ea-b248-cee43d71b191")
+			(uuid "1abfc0e1-07b2-4842-a22c-0026e31f43d3")
 			(effects
 				(font
 					(size 1 1)
@@ -15793,110 +14612,12 @@
 				(justify mirror)
 			)
 		)
-		(property "MF" "Würth Elektronik"
+		(property "MPN" "C2046935"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "be365cbc-6a34-48ad-abd4-6e63c126f644")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Description_1" "Inductors, Fixed, WE-TPC 4828 47uH .75A .25OHm | Wurth Electronics 744043470"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "1b9a500a-5094-48ee-851e-dbb4add732ce")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Package" "1919 Wurth Electronics"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "8494e22c-bdae-439a-b906-8b0448f3f67b")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Price" "None"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "cfb2da12-4c69-4e8b-abb9-399677ed1016")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "SnapEDA_Link" "https://www.snapeda.com/parts/744043470/W%25C3%25BCrth+Elektronik+Midcom/view-part/?ref=snap"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "88bf55b8-f078-4ce1-826f-1d71cddce0ee")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "MP" "744043470"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "b5482931-5dfe-4688-8e16-ef6fd48878c8")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Availability" "In Stock"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "ce1f7606-50b8-4997-b6dd-485fd8a9f288")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Check_prices" "https://www.snapeda.com/parts/744043470/W%25C3%25BCrth+Elektronik+Midcom/view-part/?ref=eda"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "d35ba83d-2a4d-4839-821e-3b98c443328a")
+			(uuid "877287c0-e0c3-4c72-b4c7-d44a56561e34")
 			(effects
 				(font
 					(size 1 1)
@@ -16266,124 +14987,12 @@
 				(justify mirror)
 			)
 		)
-		(property "MF" "Hirose Electric"
-			(at 0 0 270)
+		(property "MPN" "C324726"
+			(at 0 0 0)
 			(unlocked yes)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "8051a64b-1c6e-4857-aa1b-769a67d09056")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Description_1" "24 Position FFC, FPC Connector Contacts, Top and Bottom 0.020 (0.50mm) Surface Mount, Right Angle"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "375ec8f0-cd29-4e21-adc1-1a6e7d35d403")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Package" "None"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "f6dad068-a7a8-4693-a938-bb058f4db1cd")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Price" "None"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "fbc7d247-240a-4e1e-9c28-9b128af510e3")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Check_prices" "https://www.snapeda.com/parts/FH34SRJ-24S-0.5SH(50)/Hirose/view-part/?ref=eda"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "2c3e99a2-fc62-4346-b005-626100235a5b")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "SnapEDA_Link" "https://www.snapeda.com/parts/FH34SRJ-24S-0.5SH(50)/Hirose/view-part/?ref=snap"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "153629d9-e6c2-40ba-b0c3-d82e22b10151")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "MP" "FH34SRJ-24S-0.5SH(50)"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "4449c3d0-c74a-4c96-b76a-3056608a4b64")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Availability" "In Stock"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "f4beca8d-08fe-46dc-8b93-0861212e856c")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "MANUFACTURER" "HRS"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "9be9e766-0b92-423a-adce-129a2137c02a")
+			(uuid "7da36ba2-630e-40c1-a76f-03d884b7a55d")
 			(effects
 				(font
 					(size 1 1)
@@ -18185,152 +16794,12 @@
 				(justify mirror)
 			)
 		)
-		(property "MF" "Diodes Inc."
+		(property "MPN" "C124188"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "a8968d3e-0059-49cb-9fe0-e68c3b062bac")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Description_1" "Diode Schottky 30V 0.5A 2Pin SOD123 | Diodes Inc B0530W-7-F"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "2f7d49d1-a1c6-437a-b174-0ae0debbe16e")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Package" "SOD-123 Fairchild Semiconductor"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "f3c7f536-7c79-441f-b6e7-6a7b67d3f6bf")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Price" "None"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "faf9f15e-ff74-4cec-b99e-dee60674a642")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Check_prices" "https://www.snapeda.com/parts/B0530W-7-F/Diodes+Inc./view-part/?ref=eda"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "62d58583-849a-404b-b57a-40317f6695a3")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "STANDARD" "IPC-7351B"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "79b35201-c2c4-41b3-9d70-f5f3fdca270b")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "PARTREV" "9-2"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "2fd1734e-c8d4-41fc-9a3a-09c55b83b618")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "SnapEDA_Link" "https://www.snapeda.com/parts/B0530W-7-F/Diodes+Inc./view-part/?ref=snap"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "f26f2dbb-b036-45bc-9792-aa5363aa4964")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "MP" "B0530W-7-F"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "6ca8a57a-6149-4d87-b14b-878ca7cc142e")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Availability" "In Stock"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "70cbd691-d624-4f1d-a62d-0557786b3555")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "MANUFACTURER" "DIODES"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "966cc470-8ea4-43d3-993f-cc692bc33aee")
+			(uuid "be56b35e-1e9f-49b4-91cf-2343720443a2")
 			(effects
 				(font
 					(size 1 1)
@@ -19616,152 +18085,12 @@
 				(justify mirror)
 			)
 		)
-		(property "MF" "Diodes Inc."
-			(at 0 0 270)
+		(property "MPN" "C124188"
+			(at 0 0 0)
 			(unlocked yes)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "d6af4582-50e0-4d42-adc8-f21a49b3fba8")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Description_1" "Diode Schottky 30V 0.5A 2Pin SOD123 | Diodes Inc B0530W-7-F"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "3d4d28eb-796d-44ab-8e6c-4222654f2d7c")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Package" "SOD-123 Fairchild Semiconductor"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "28050206-c54f-4c97-bf73-a5c8222f611f")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Price" "None"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "73c91e37-ea2a-4faa-8a11-2689f3ae30e0")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Check_prices" "https://www.snapeda.com/parts/B0530W-7-F/Diodes+Inc./view-part/?ref=eda"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "761dc66e-1f05-42cf-8db2-691f90f1881f")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "STANDARD" "IPC-7351B"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "0f54a3f6-117f-493a-a369-c1032a283686")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "PARTREV" "9-2"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "01b210dc-0823-4830-8ef5-792563a60717")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "SnapEDA_Link" "https://www.snapeda.com/parts/B0530W-7-F/Diodes+Inc./view-part/?ref=snap"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "ca604b58-134c-4fa9-a0cd-f2ac590a4065")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "MP" "B0530W-7-F"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "aeccc7e7-f8be-4306-aa99-6daf16885abf")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Availability" "In Stock"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "a8c255d5-eb8f-470c-9981-2e67253da8d0")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "MANUFACTURER" "DIODES"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "c19f0f0b-bcc8-4f11-9660-91b45103d03c")
+			(uuid "d996f6a7-b696-44a9-8e7a-429837a7a6e2")
 			(effects
 				(font
 					(size 1 1)
@@ -21806,166 +20135,12 @@
 				(justify mirror)
 			)
 		)
-		(property "MF" "Diodes Inc."
+		(property "MPN" "C85047"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "0f835a00-5330-4992-a456-c0e40822ebc1")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Description_1" "MOSFET,N-Ch,Enhancement,60V,0.38A,SOT23 | Diodes Inc 2N7002K-7"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "3df126b2-246c-4e57-98f4-214c4c1806fd")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Package" "SOT-23-3 Diodes Inc."
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "02581fe7-a26d-4a97-9207-5b8485cb852c")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Price" "None"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "e0044eee-660a-42d2-99a3-bb6826002442")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Check_prices" "https://www.snapeda.com/parts/2N7002K-7/Diodes+Inc./view-part/?ref=eda"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "333e5125-f61f-4c4b-864b-6c5000c4ef43")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "MAXIMUM_PACKAGE_HIEGHT" "1.1mm"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "46fc03b9-0b8f-435d-ac18-8688fafde905")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "STANDARD" "IPC7351B"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "51b185d7-e63b-42e5-b90b-614ff861d288")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "PARTREV" "15-2"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "495fdb4c-3a37-4c11-bc70-20ef5055db11")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "SnapEDA_Link" "https://www.snapeda.com/parts/2N7002K-7/Diodes+Inc./view-part/?ref=snap"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "904a7d84-0a8a-42ff-9d7c-dd6c528e4fcf")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "MP" "2N7002K-7"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "50683577-b27f-4e38-825f-8e6a8eae9e8c")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Availability" "In Stock"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "1cce371a-e664-42f4-a455-e19a129d97df")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "MANUFACTURER" "Diodes Inc."
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "f59b8cef-5f95-4fb0-8e06-95c65685343b")
+			(uuid "4173da73-7bb8-460c-acfd-4c3ff8f96872")
 			(effects
 				(font
 					(size 1 1)
@@ -22345,110 +20520,12 @@
 				(justify mirror)
 			)
 		)
-		(property "MF" "Texas Instruments"
-			(at 0 0 180)
+		(property "MPN" "C81080"
+			(at 0 0 0)
 			(unlocked yes)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "f7980455-72a1-4b08-9609-50b110ae687b")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Description_1" "Standalone 1-cell 1-A linear battery charger with 4.2-V VBAT and Temperature Sensing"
-			(at 0 0 180)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "7868d583-400c-4df6-8679-8166f1d80e56")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Package" "WSON-10 Texas Instruments"
-			(at 0 0 180)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "fb7008eb-f370-4b82-afa2-aa884f466fd7")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Price" "None"
-			(at 0 0 180)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "d9fa5170-96b9-4f49-89c2-1e6f8ff477cc")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "SnapEDA_Link" "https://www.snapeda.com/parts/BQ24040DSQR/Texas+Instruments/view-part/?ref=snap"
-			(at 0 0 180)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "dce96c6a-a48d-431b-8094-c6c622684b36")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "MP" "BQ24040DSQR"
-			(at 0 0 180)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "f6971f13-aeda-4595-8d25-27600cfb70be")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Availability" "In Stock"
-			(at 0 0 180)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "0ef3d3b5-710d-479a-b06e-4f14876362e2")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Check_prices" "https://www.snapeda.com/parts/BQ24040DSQR/Texas+Instruments/view-part/?ref=eda"
-			(at 0 0 180)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "093f218b-49cf-4bf3-b39a-a8bf78b4bb62")
+			(uuid "979a8b50-3127-414b-8686-62961b148f3e")
 			(effects
 				(font
 					(size 1 1)
@@ -22813,180 +20890,12 @@
 				(justify mirror)
 			)
 		)
-		(property "MF" "JST Sales America Inc."
+		(property "MPN" "C173752"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "fbfeb6da-5f4c-4612-a478-ab5a805fb127")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "MAXIMUM_PACKAGE_HEIGHT" "4.8mm"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "a4ed6724-a3ab-42eb-94f3-3f4ddee9e98f")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "PACKAGE" "None"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "31702364-ceec-4d0a-b845-33a7a3b66123")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "PRICE" "None"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "a3f34b46-4ee7-4784-a42c-bace6e304a44")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Package" "NON STANDARD-2 J.S.T."
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "fa6e9a2d-a229-47f5-af79-130d1fc4b777")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Check_prices" "https://www.snapeda.com/parts/S2B-PH-K-S(LF)(SN)/JST/view-part/?ref=eda"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "e9f08947-fa0f-409f-90c6-70e77964d6a8")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Price" "None"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "dbf84b4b-855f-4397-891e-c41222a715ce")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "SnapEDA_Link" "https://www.snapeda.com/parts/S2B-PH-K-S(LF)(SN)/JST/view-part/?ref=snap"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "95c659fc-2ff6-4fd1-8369-b92ea7c78989")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "MP" "S2B-PH-K-S(LF)(SN)"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "a45b36a6-bef6-4ecc-b7f0-f560fa1ad501")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Description_1" "Connector Header Through Hole, Right Angle 2 position"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "96458272-f7f5-43e1-a7de-99812c802b72")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Availability" "In Stock"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "95217dba-83d9-40b5-ae54-f1bba2858cff")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "AVAILABILITY" "Unavailable"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "f45ead27-18ac-4ad1-9b97-7c737fcdd7b5")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "DESCRIPTION" "Connector Header Through Hole, Right Angle 2 position"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "20aa814e-e01b-461d-a80d-ee0652ae042d")
+			(uuid "08daa370-060f-4fea-bc98-aaf53a36ce3c")
 			(effects
 				(font
 					(size 1 1)
@@ -25867,7 +23776,7 @@
 			)
 			(justify left bottom)
 		)
-		(render_cache "\"misfits\" ESP32-S3-Mini based OSHW smartwatch rev 3\n2026-09-25\nhttps://engineering.redlucy404.de"
+		(render_cache "\"misfits\" ESP32-S3-Mini based OSHW smartwatch rev 3\n2026-09-27\nhttps://engineering.redlucy404.de"
 			-0
 			(polygon
 				(pts
@@ -26967,24 +24876,12 @@
 			)
 			(polygon
 				(pts
-					(xy 140.706284 105.330273) (xy 140.666587 105.3329) (xy 140.632827 105.340303) (xy 140.580346 105.360819)
-					(xy 140.561405 105.369249) (xy 140.550991 105.371306) (xy 140.539958 105.368766) (xy 140.533551 105.361661)
-					(xy 140.53107 105.348271) (xy 140.53107 105.066491) (xy 140.826955 105.066491) (xy 140.844503 105.069348)
-					(xy 140.85335 105.076409) (xy 140.856355 105.087923) (xy 140.853282 105.100138) (xy 140.84437 105.10751)
-					(xy 140.826955 105.110455) (xy 140.574072 105.110455) (xy 140.574072 105.318458) (xy 140.626016 105.299859)
-					(xy 140.671881 105.289539) (xy 140.712603 105.28631) (xy 140.751872 105.290053) (xy 140.786596 105.300899)
-					(xy 140.817703 105.31875) (xy 140.845823 105.344149) (xy 140.868487 105.374462) (xy 140.884766 105.408416)
-					(xy 140.89481 105.446704) (xy 140.898304 105.490237) (xy 140.894271 105.539407) (xy 140.882706 105.582332)
-					(xy 140.863993 105.620118) (xy 140.837946 105.65359) (xy 140.805788 105.681354) (xy 140.770001 105.701)
-					(xy 140.729842 105.712999) (xy 140.684256 105.717154) (xy 140.643616 105.714008) (xy 140.602923 105.704469)
-					(xy 140.564703 105.690032) (xy 140.535787 105.674335) (xy 140.510684 105.656322) (xy 140.492235 105.639943)
-					(xy 140.478564 105.623408) (xy 140.475474 105.614664) (xy 140.47702 105.606864) (xy 140.481748 105.600009)
-					(xy 140.488609 105.595283) (xy 140.496448 105.593735) (xy 140.504913 105.597067) (xy 140.525803 105.61361)
-					(xy 140.55078 105.632326) (xy 140.588726 105.653315) (xy 140.631727 105.668044) (xy 140.682149 105.67319)
-					(xy 140.719622 105.669816) (xy 140.752369 105.660106) (xy 140.781294 105.644276) (xy 140.807034 105.621991)
-					(xy 140.827756 105.59505) (xy 140.842731 105.564283) (xy 140.85204 105.528964) (xy 140.855302 105.488131)
-					(xy 140.850409 105.443095) (xy 140.836511 105.405669) (xy 140.813857 105.374191) (xy 140.783798 105.349978)
-					(xy 140.748472 105.335369)
+					(xy 140.833275 105.128865) (xy 140.833275 105.110455) (xy 140.52791 105.110455) (xy 140.52791 105.146267)
+					(xy 140.525118 105.163369) (xy 140.518211 105.171999) (xy 140.506936 105.174935) (xy 140.495029 105.171903)
+					(xy 140.487805 105.163068) (xy 140.484908 105.145717) (xy 140.484908 105.066491) (xy 140.876277 105.066491)
+					(xy 140.876277 105.135001) (xy 140.70523 105.680426) (xy 140.695489 105.697814) (xy 140.684256 105.7025)
+					(xy 140.676452 105.700946) (xy 140.669556 105.69618) (xy 140.664828 105.689281) (xy 140.663282 105.681434)
+					(xy 140.665388 105.667786)
 				)
 			)
 			(polygon
