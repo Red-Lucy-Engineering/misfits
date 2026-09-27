@@ -17488,7 +17488,6 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "6db305c5-fca7-47b4-965b-5b5442913881")
 		(property "Reference" "R6"
 			(at 93.98 123.1899 90)
@@ -17501,9 +17500,8 @@
 				(justify right)
 			)
 		)
-		(property "Value" "200K Ohms"
-			(at 91.44 130.81 0)
-			(hide yes)
+		(property "Value" "200K"
+			(at 95.758 124.46 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
