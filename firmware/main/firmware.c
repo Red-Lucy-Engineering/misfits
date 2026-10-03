@@ -69,7 +69,7 @@ static const char *TAG = "misfits";
 
 static RTC_DATA_ATTR uint32_t partial_updates = FULL_UPDATE_INTERVAL;
 static RTC_DATA_ATTR time_t last_sync_time;
-static RTC_DATA_ATTR time_t last_sync_attempt;
+static RTC_DATA_ATTR time_t last_sync_attempt __attribute__((unused));
 
 static volatile bool ble_time_written;
 static volatile bool ble_connected;
@@ -557,9 +557,9 @@ static void ble_on_sync(void)
     ESP_LOGI(TAG, "advertising");
 }
 
-static bool ble_sync_perform(void)
+static void ble_init_persistent(void)
 {
-    ESP_LOGI(TAG, "starting BLE sync window (%d ms)", BLE_SYNC_WINDOW_MS);
+    ESP_LOGI(TAG, "starting BLE persistent");
 
     esp_err_t err = nvs_flash_init();
     if (err == ESP_ERR_NVS_NO_FREE_PAGES || err == ESP_ERR_NVS_NEW_VERSION_FOUND) {
@@ -596,36 +596,6 @@ static bool ble_sync_perform(void)
     ble_active = true;
 
     nimble_port_freertos_init(ble_host_task);
-
-    int elapsed = 0;
-    while (elapsed < BLE_SYNC_WINDOW_MS) {
-        if (ble_time_written) {
-            vTaskDelay(pdMS_TO_TICKS(500));
-            break;
-        }
-        vTaskDelay(pdMS_TO_TICKS(100));
-        elapsed += 100;
-    }
-
-    ble_active = false;
-
-    if (ble_connected) {
-        ble_gap_terminate(ble_conn_handle, BLE_ERR_REM_USER_CONN_TERM);
-        int wait = 0;
-        while (ble_connected && wait < 2000) {
-            vTaskDelay(pdMS_TO_TICKS(50));
-            wait += 50;
-        }
-    }
-    ble_gap_adv_stop();
-
-    nimble_port_stop();
-    nimble_port_deinit();
-
-    if (!ble_time_written) {
-        ESP_LOGW(TAG, "sync window expired");
-    }
-    return ble_time_written;
 }
 
 
@@ -646,23 +616,12 @@ void app_main(void) {
 
     time_init();
 
-    uint32_t wakeup_causes = esp_sleep_get_wakeup_causes();
-    time_t now = time(NULL);
-
-    bool power_on = wakeup_causes == 0;
-    bool button_wakeup = (wakeup_causes & ESP_SLEEP_WAKEUP_EXT0) != 0;
-
-	bool has_time_sync = last_sync_time >= TIME_VALID_THRESHOLD;
-
-    bool need_sync =
-        power_on ||
-        button_wakeup ||
-        now < TIME_VALID_THRESHOLD ||
-        (now - last_sync_time) >= SYNC_INTERVAL_SEC;
-
     esp_lcd_panel_handle_t eink = get_eink(&disp_cfg);
     ESP_ERROR_CHECK(esp_lcd_panel_reset(eink));
     ESP_ERROR_CHECK(esp_lcd_panel_init(eink));
+
+    bool has_time_sync = last_sync_time >= TIME_VALID_THRESHOLD;
+    time_t now = time(NULL);
 
     if (!has_time_sync) {
         ESP_LOGI(TAG, "no valid time, showing pairing screen");
@@ -676,26 +635,35 @@ void app_main(void) {
         update_display(eink);
     }
 
-    if (need_sync && (now - last_sync_attempt) >= SYNC_RETRY_SEC) {
-        last_sync_attempt = now;
+    struct tm tm_init;
+    localtime_r(&now, &tm_init);
+    int last_min = tm_init.tm_min;
 
-        if (ble_sync_perform()) {
+    ble_init_persistent();
+
+    ESP_LOGI(TAG, "test mode: staying awake, BLE persistent, display on");
+    for (;;) {
+        if (ble_time_written) {
+            ble_time_written = false;
             last_sync_time = time(NULL);
-            now = last_sync_time;
-            partial_updates = FULL_UPDATE_INTERVAL;
-
+            time_t cur = last_sync_time;
             struct tm tm_now;
-            localtime_r(&now, &tm_now);
+            localtime_r(&cur, &tm_now);
+            last_min = tm_now.tm_min;
+            partial_updates = FULL_UPDATE_INTERVAL;
             render_screen(&tm_now);
             update_display(eink);
+        } else {
+            time_t cur = time(NULL);
+            struct tm tm_cur;
+            localtime_r(&cur, &tm_cur);
+            bool synced = last_sync_time >= TIME_VALID_THRESHOLD;
+            if (synced && tm_cur.tm_min != last_min) {
+                last_min = tm_cur.tm_min;
+                render_screen(&tm_cur);
+                update_display(eink);
+            }
         }
-    }
-
-    ESP_ERROR_CHECK(esp_lcd_panel_disp_sleep(eink, true));
-
-    // Deep sleep disabled during development, see sleep_until_next_minute().
-    ESP_LOGI(TAG, "test mode: staying awake");
-    for (;;) {
-        vTaskDelay(pdMS_TO_TICKS(1000));
+        vTaskDelay(pdMS_TO_TICKS(200));
     }
 }
