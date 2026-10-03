@@ -34,9 +34,29 @@
 #include <assert.h>
 #include <string.h>
 
+#include "esp_sleep.h"
+#include <stdio.h>
+#include <time.h>
+#include <sys/time.h>
+
 
 #define DISPLAY_W 200
 #define DISPLAY_H 200
+
+#define FULL_UPDATE_INTERVAL 5
+#define WAKE_MARGIN_US 1000000ULL
+#define TIMEZONE "CET-1CEST,M3.5.0,M10.5.0/3"
+
+static RTC_DATA_ATTR uint32_t partial_updates = FULL_UPDATE_INTERVAL;
+
+static const char *weekday_names[] = {
+    "So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"
+};
+
+static const char *month_names[] = {
+    "Januar", "Februar", "März", "April", "Mai", "Juni",
+    "Juli", "August", "September", "Oktober", "November", "Dezember"
+};
 
 
 /**
@@ -223,42 +243,108 @@ static void draw_text(const bitmap_font_t *font,
     }
 }
 
+static void time_init(void)
+{
+    setenv("TZ", TIMEZONE, 1);
+    tzset();
 
-/**
- * @brief User code entry point
- * 
- */
-void app_main(void) {
-    // Initialize the E-ink interface
-    gdey0154d67_disp_cfg_t disp_cfg = {
-        .sck   = GPIO_NUM_12,   // SCLK
-        .sdi   = GPIO_NUM_11,   // MOSI / SDI
-        .dc    = GPIO_NUM_9,    // DC
-        .cs    = GPIO_NUM_10,   // CS
-        .busy  = GPIO_NUM_18,   // BUSY
-        .res   = GPIO_NUM_8,    // RES
-        .retain_ram = true,
+    if (time(NULL) > 1700000000) {
+        return;
+    }
+
+    struct tm tm_default = {
+        .tm_year = 126,
+        .tm_mon = 8,
+        .tm_mday = 29,
+        .tm_hour = 12,
+        .tm_min = 34,
+        .tm_isdst = -1,
     };
-    esp_lcd_panel_handle_t eink = get_eink(&disp_cfg);
+    struct timeval tv = {
+        .tv_sec = mktime(&tm_default),
+    };
+    settimeofday(&tv, NULL);
+}
 
-    // Initialize the E-ink
-    ESP_ERROR_CHECK(esp_lcd_panel_reset(eink));
-    ESP_ERROR_CHECK(esp_lcd_panel_init(eink));
-    // Note: ESP_ERROR_CHECK(esp_lcd_panel_disp_sleep(eink, false)); would to the same
+static void render_screen(const struct tm *now)
+{
+    char time_text[8];
+    char date_text[32];
+
+    snprintf(time_text, sizeof(time_text), "%02d:%02d",
+             now->tm_hour, now->tm_min);
+    snprintf(date_text, sizeof(date_text), "%s, %d. %s",
+             weekday_names[now->tm_wday], now->tm_mday,
+             month_names[now->tm_mon]);
 
     framebuffer_clear();
 
-	const char *time_text = "12:34";
-	int time_x = (DISPLAY_W - text_width(&freemono_large, time_text)) / 2;
+    int time_x = (DISPLAY_W - text_width(&freemono_large, time_text)) / 2;
+    int date_x = (DISPLAY_W - text_width(&freemono_small, date_text)) / 2;
 
-	draw_text(&freemono_large, time_x, 88, time_text);
-	draw_text(&freemono_small, 12, 140, "Di, 29. September");
-	draw_text(&freemono_small, 12, 170, "Nachricht: Grüße!");
+    draw_text(&freemono_large, time_x, 88, time_text);
+    draw_text(&freemono_small, date_x, 140, date_text);
+}
 
-	ESP_ERROR_CHECK(esp_lcd_gdey0154d67_set_update_mode(eink, esp_lcd_gdey0154d67_full_update));
+static void update_display(esp_lcd_panel_handle_t eink)
+{
+    if (partial_updates >= FULL_UPDATE_INTERVAL) {
+        ESP_ERROR_CHECK(esp_lcd_gdey0154d67_set_update_mode(eink, esp_lcd_gdey0154d67_full_update));
+        partial_updates = 0;
+    } else {
+        ESP_ERROR_CHECK(esp_lcd_gdey0154d67_set_update_mode(eink, esp_lcd_gdey0154d67_partial_update));
+        partial_updates++;
+    }
 
-	ESP_ERROR_CHECK(esp_lcd_panel_draw_bitmap(eink, 0, 0, DISPLAY_W, DISPLAY_H, framebuffer));
+    ESP_ERROR_CHECK(esp_lcd_panel_draw_bitmap(eink, 0, 0, DISPLAY_W, DISPLAY_H, framebuffer));
+}
 
-    // Release the E-ink handle
-    ESP_ERROR_CHECK(esp_lcd_panel_del(eink));
+static void sleep_until_next_minute(const gdey0154d67_disp_cfg_t * const disp_cfg)
+{
+    struct timeval tv;
+    gettimeofday(&tv, NULL);
+
+    uint64_t sleep_us = (uint64_t)(60 - tv.tv_sec % 60) * 1000000ULL
+                        - tv.tv_usec + WAKE_MARGIN_US;
+
+    gpio_hold_en(disp_cfg->res);
+    gpio_hold_en(disp_cfg->cs);
+    gpio_deep_sleep_hold_en();
+
+    ESP_ERROR_CHECK(esp_sleep_enable_timer_wakeup(sleep_us));
+    esp_deep_sleep_start();
+}
+
+
+void app_main(void) {
+    gdey0154d67_disp_cfg_t disp_cfg = {
+        .sck   = GPIO_NUM_12,
+        .sdi   = GPIO_NUM_11,
+        .dc    = GPIO_NUM_9,
+        .cs    = GPIO_NUM_10,
+        .busy  = GPIO_NUM_18,
+        .res   = GPIO_NUM_8,
+        .retain_ram = true,
+    };
+
+    gpio_deep_sleep_hold_dis();
+    gpio_hold_dis(disp_cfg.res);
+    gpio_hold_dis(disp_cfg.cs);
+
+    time_init();
+
+    esp_lcd_panel_handle_t eink = get_eink(&disp_cfg);
+    ESP_ERROR_CHECK(esp_lcd_panel_reset(eink));
+    ESP_ERROR_CHECK(esp_lcd_panel_init(eink));
+
+    time_t now = time(NULL);
+    struct tm tm_now;
+    localtime_r(&now, &tm_now);
+
+    render_screen(&tm_now);
+    update_display(eink);
+
+    ESP_ERROR_CHECK(esp_lcd_panel_disp_sleep(eink, true));
+
+    sleep_until_next_minute(&disp_cfg);
 }
