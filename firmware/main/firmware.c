@@ -1,5 +1,5 @@
 /**
- * @file demo.c
+ * @file main.c
  * @author Jakub Kral (jakub6kral@centrum.cz), Lucy Mielke (engineering@redlucy404.de)
  * @brief misfits firmware based on gdey0154d67 democode
  * @note Full/fast display update is recommended every 5 screen partial updates.
