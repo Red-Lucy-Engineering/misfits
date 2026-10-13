@@ -23,6 +23,9 @@
 #include "services/gatt/ble_svc_gatt.h"
 #include "os/os_mbuf.h"
 
+#include "ans.h"
+#include "mcs.h"
+
 static const char *TAG = "misfits_ble";
 
 volatile bool ble_time_written;
@@ -222,6 +225,8 @@ void ble_init_persistent(void) {
     ble_svc_gatt_init();
     ESP_ERROR_CHECK(ble_gatts_count_cfg(gatt_svcs));
     ESP_ERROR_CHECK(ble_gatts_add_svcs(gatt_svcs));
+    ESP_ERROR_CHECK(ans_init());
+    ESP_ERROR_CHECK(mcs_init());
     ESP_ERROR_CHECK(ble_svc_gap_device_name_set(DEVICE_NAME));
 
     ble_store_config_init();

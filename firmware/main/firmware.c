@@ -40,6 +40,13 @@
 
 #include "eink.h"
 #include "ble.h"
+#include "ans.h"
+#include "mcs.h"
+
+/* Gadgetbridge writes to the drawing area as bursts (title, artist, duration, status ...);
+ * redraw whenever no new information comes for a while.
+ */
+#define DATA_DEBOUNCE_MS 750
 
 #define TIMEZONE "CET-1CEST,M3.5.0,M10.5.0/3"
 
@@ -119,6 +126,9 @@ void app_main(void) {
 
     ble_init_persistent();
 
+    bool data_pending = false;
+    TickType_t data_tick = 0;
+
     ESP_LOGI(TAG, "test mode: staying awake, BLE persistent, display on");
     for (;;) {
         if (ble_time_written) {
@@ -136,8 +146,17 @@ void app_main(void) {
             struct tm tm_cur;
             localtime_r(&cur, &tm_cur);
             bool synced = last_sync_time >= TIME_VALID_THRESHOLD;
-            if (synced && tm_cur.tm_min != last_min) {
+
+            if (ans_take_changed() | mcs_take_changed()) {
+                data_pending = true;
+                data_tick = xTaskGetTickCount();
+            }
+            bool data_due = data_pending &&
+                (TickType_t)(xTaskGetTickCount() - data_tick) >= pdMS_TO_TICKS(DATA_DEBOUNCE_MS);
+
+            if (synced && (tm_cur.tm_min != last_min || data_due)) {
                 last_min = tm_cur.tm_min;
+                data_pending = false;
                 render_screen(&tm_cur);
                 update_display(eink);
             }

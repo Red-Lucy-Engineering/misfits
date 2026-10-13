@@ -15,6 +15,18 @@
 #include "freemono_fonts.h"
 #include "glyph.h"
 #include "localisation.h"
+#include "ans.h"
+#include "mcs.h"
+
+// constants for date and time
+#define TIME_Y 88
+#define DATE_Y 140
+
+// constants for notification and music display on watch
+#define NOTE_LINE_Y 164
+#define SONG_LINE_Y 188
+#define TEXT_MARGIN 4
+
 
 uint8_t framebuffer[DISPLAY_W * DISPLAY_H / 8];
 
@@ -82,7 +94,40 @@ void update_display(esp_lcd_panel_handle_t eink) {
     ESP_ERROR_CHECK(esp_lcd_panel_draw_bitmap(eink, 0, 0, DISPLAY_W, DISPLAY_H, framebuffer));
 }
 
+/* shortens s in place with "..." if it's to long to be displayed in one line
+ * on the eInk display with freemono_small
+ *
+ */
+static void fit_small(char *s, int max_w) {
+	if (text_width(&freemono_small, s) <= max_w) {
+		return;
+	}
+	
+	size_t len = strlen(s);
+	
+	while (len > 0) {
+		do {
+			len--;
+		} while (len > 0 && ((unsigned char)s[len] & 0xC0) == 0x80);
+		
+		s[len] = '\0';
+		strcpy(s + len, "...");
+		
+		if (text_width(&freemono_small, s) <= max_w) {
+			return;
+		}
+		
+		s[len] = '\0';
+	}
+}
+
+static void draw_centered_small(int y, const char *text) {
+	draw_text(&freemono_small, 
+	          (DISPLAY_W - text_width(&freemono_small, text)) / 2, y, text);
+}
+
 void render_screen(const struct tm *now) {
+	// Date and time
     char time_text[8];
     char date_text[32];
 
@@ -97,8 +142,26 @@ void render_screen(const struct tm *now) {
     int time_x = (DISPLAY_W - text_width(&freemono_large, time_text)) / 2;
     int date_x = (DISPLAY_W - text_width(&freemono_small, date_text)) / 2;
 
-    draw_text(&freemono_large, time_x, 88, time_text);
-    draw_text(&freemono_small, date_x, 140, date_text);
+    draw_text(&freemono_large, time_x, TIME_Y, time_text);
+    draw_text(&freemono_small, date_x, DATE_Y, date_text);
+    
+    // notifications
+    uint16_t unread = ans_get_unread_total();
+    if (unread > 0) {
+    	char note_text[24];
+    	snprintf(note_text, sizeof(note_text), "%u unread", (unsigned)unread);
+    	draw_centered_small(NOTE_LINE_Y, note_text);
+    }
+    
+    // currently playing song
+    mcs_snapshot_t media;
+    mcs_get(&media);
+    if (media.state == MCS_STATE_PLAYING && media.title[0] != '\0') {
+    	char song_text[MCS_STR_MAX + 4];
+    	strlcpy(song_text, media.title, sizeof(song_text));
+    	fit_small(song_text, DISPLAY_W - 2 * TEXT_MARGIN);
+    	draw_centered_small(SONG_LINE_Y, song_text);
+    }
 }
 
 void render_pairing_screen(void) {
