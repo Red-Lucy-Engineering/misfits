@@ -147,16 +147,21 @@ void app_main(void) {
             localtime_r(&cur, &tm_cur);
             bool synced = last_sync_time >= TIME_VALID_THRESHOLD;
 
-            if (ans_take_changed() | mcs_take_changed()) {
+            if (ans_take_changed() || mcs_take_changed()) {
                 data_pending = true;
                 data_tick = xTaskGetTickCount();
             }
             bool data_due = data_pending &&
                 (TickType_t)(xTaskGetTickCount() - data_tick) >= pdMS_TO_TICKS(DATA_DEBOUNCE_MS);
 
-            if (synced && (tm_cur.tm_min != last_min || data_due)) {
-                last_min = tm_cur.tm_min;
+			bool minute_changed = (tm_cur.tm_min != last_min);
+            if (synced && (minute_changed || data_due)) {
+            	if (minute_changed) {
+            		last_min = tm_cur.tm_min;
+            	}
+                
                 data_pending = false;
+                ESP_LOGI(TAG, "Redraw Screen. Reason: %s", minute_changed ? "New Minute" : "New BLE Data");
                 render_screen(&tm_cur);
                 update_display(eink);
             }
