@@ -133,8 +133,31 @@ int ble_gap_event(struct ble_gap_event *event, void *arg) {
             ble_conn_handle = event->connect.conn_handle;
             ble_connected = true;
             ESP_LOGI(TAG, "connected");
+            
+            struct ble_gap_upd_params params = {
+            	.itvl_min = 400,
+            	.itvl_max = 800,
+            	.latency = 2,
+            	.supervision_timeout = 1000,
+            	.min_ce_len = 0,
+            	.max_ce_len = 0,
+            };
+            int rc = ble_gap_update_params(event->connect.conn_handle, &params);
+            if (rc != 0) {
+            	ESP_LOGW(TAG, "conn param update request failed: %d", rc);
+            }
         }
         break;
+        
+    case BLE_GAP_EVENT_CONN_UPDATE:
+    	struct ble_gap_conn_desc desc;
+    	if (event->conn_update.status == 0 &&
+    	    ble_gap_conn_find(event->conn_update.conn_handle, &desc) == 0) {
+    		ESP_LOGI(TAG, "conn params: itvl %d ms, latency %d, timeout %d ms",
+    			     desc.conn_itvl * 5 / 5, desc.conn_latency,
+    			     desc.supervision_timeout * 10);
+    	}
+    	break;
 
     case BLE_GAP_EVENT_DISCONNECT:
         ble_connected = false;

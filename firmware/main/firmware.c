@@ -35,6 +35,8 @@
 #include "esp_err.h"
 #include "esp_log.h"
 #include "esp_attr.h"
+#include "esp_pm.h"
+
 #include "driver/gpio.h"
 #include "esp_lcd_panel_ops.h"
 
@@ -123,6 +125,13 @@ void app_main(void) {
     struct tm tm_init;
     localtime_r(&now, &tm_init);
     int last_min = tm_init.tm_min;
+    
+    esp_pm_config_t pm_cfg = {
+    	.max_freq_mhz = 80,
+    	.min_freq_mhz = 40,
+    	.light_sleep_enable = true,
+	};
+	ESP_ERROR_CHECK(esp_pm_configure(&pm_cfg));
 
     ble_init_persistent();
 
