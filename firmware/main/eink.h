@@ -12,7 +12,7 @@
 #define DISPLAY_W 200
 #define DISPLAY_H 200
 
-#define FULL_UPDATE_INTERVAL 5
+#define FULL_UPDATE_INTERVAL 60
 
 extern uint8_t framebuffer[DISPLAY_W * DISPLAY_H / 8];
 extern uint32_t partial_updates;

@@ -165,31 +165,7 @@ void render_screen(const struct tm *now) {
 }
 
 void render_pairing_screen(void) {
-    const char *line1 = "Willkommen bei";
-    const char *line2 = "misfits";
-    const char *line3 = "Bitte per Bluetooth";
-    const char *line4 = "mit dem Smartphone";
-    const char *line5 = "verbinden";
-
-    framebuffer_clear();
-
-    draw_text(&freemono_small,
-              (DISPLAY_W - text_width(&freemono_small, line1)) / 2,
-              52, line1);
-
-    draw_text(&freemono_small,
-              (DISPLAY_W - text_width(&freemono_small, line2)) / 2,
-              76, line2);
-
-    draw_text(&freemono_small,
-              (DISPLAY_W - text_width(&freemono_small, line3)) / 2,
-              120, line3);
-
-    draw_text(&freemono_small,
-              (DISPLAY_W - text_width(&freemono_small, line4)) / 2,
-              144, line4);
-
-    draw_text(&freemono_small,
-              (DISPLAY_W - text_width(&freemono_small, line5)) / 2,
-              168, line5);
+	framebuffer_clear();
+	const int y0 = (DISPLAY_H - RACCOON_H) / 2;
+	memcpy(&framebuffer[y0 * (DISPLAY_W / 8)], raccoon_bitmap, sizeof(raccoon_bitmap));
 }
