@@ -4,11 +4,14 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 #include "driver/spi_master.h"
 #include "esp_err.h"
 #include "esp_lcd_io_spi.h"
 #include "esp_lcd_panel_ops.h"
 #include "esp_lcd_panel_vendor.h"
+#include "esp_pm.h"
 #include "gdey0154d67.h"
 #include "soc/soc_caps.h"
 
@@ -27,6 +30,8 @@
 #define SONG_LINE_Y 188
 #define TEXT_MARGIN 4
 
+static esp_pm_lock_handle_t s_disp_lock;
+static gpio_num_t s_busy_pin = GPIO_NUM_18;
 
 uint8_t framebuffer[DISPLAY_W * DISPLAY_H / 8];
 
@@ -78,11 +83,24 @@ void framebuffer_clear(void) {
 	};
 	esp_lcd_panel_handle_t panel_handle = NULL;
 	ESP_ERROR_CHECK(esp_lcd_new_panel_gdey0154d67(io_handle, &panel_config, &panel_handle));
+	
+	s_busy_pin = disp_cfg->busy;
+	ESP_ERROR_CHECK(esp_pm_lock_create(ESP_PM_NO_LIGHT_SLEEP, 0, "eink", &s_disp_lock));
 
 	return panel_handle;
 }
 
+static void wait_display_idle(void) {
+    // SSD1681-Familie: BUSY high = beschäftigt. Polarität im Treiber prüfen!
+    TickType_t t0 = xTaskGetTickCount();
+    while (!gpio_get_level(s_busy_pin) &&
+           (xTaskGetTickCount() - t0) < pdMS_TO_TICKS(5000)) {
+        vTaskDelay(pdMS_TO_TICKS(10));
+    }
+}
+
 void update_display(esp_lcd_panel_handle_t eink) {
+	esp_pm_lock_acquire(s_disp_lock);
     if (partial_updates >= FULL_UPDATE_INTERVAL) {
         ESP_ERROR_CHECK(esp_lcd_gdey0154d67_set_update_mode(eink, esp_lcd_gdey0154d67_full_update));
         partial_updates = 0;
@@ -92,6 +110,9 @@ void update_display(esp_lcd_panel_handle_t eink) {
     }
 
     ESP_ERROR_CHECK(esp_lcd_panel_draw_bitmap(eink, 0, 0, DISPLAY_W, DISPLAY_H, framebuffer));
+    
+    wait_display_idle();
+    esp_pm_lock_release(s_disp_lock);
 }
 
 /* shortens s in place with "..." if it's to long to be displayed in one line
