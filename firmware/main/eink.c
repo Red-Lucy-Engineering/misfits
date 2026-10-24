@@ -1,0 +1,192 @@
+#include "eink.h"
+
+#include <assert.h>
+#include <stdio.h>
+#include <string.h>
+
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "driver/spi_master.h"
+#include "esp_err.h"
+#include "esp_lcd_io_spi.h"
+#include "esp_lcd_panel_ops.h"
+#include "esp_lcd_panel_vendor.h"
+#include "esp_pm.h"
+#include "gdey0154d67.h"
+#include "soc/soc_caps.h"
+
+#include "freemono_fonts.h"
+#include "glyph.h"
+#include "localisation.h"
+#include "ans.h"
+#include "mcs.h"
+
+// constants for date and time
+#define TIME_Y 88
+#define DATE_Y 140
+
+// constants for notification and music display on watch
+#define NOTE_LINE_Y 164
+#define SONG_LINE_Y 188
+#define TEXT_MARGIN 4
+
+static esp_pm_lock_handle_t s_disp_lock;
+static gpio_num_t s_busy_pin = GPIO_NUM_18;
+
+uint8_t framebuffer[DISPLAY_W * DISPLAY_H / 8];
+
+void framebuffer_clear(void) {
+    // Display image data: 1 = white, 0 = black.
+    memset(framebuffer, 0xFF, sizeof(framebuffer));
+}
+
+
+
+
+/*static*/ esp_lcd_panel_handle_t get_eink(const gdey0154d67_disp_cfg_t * const disp_cfg) {
+    assert(disp_cfg != NULL);
+
+	// initialize SPI interface
+	const spi_bus_config_t buscfg = {
+		.sclk_io_num = disp_cfg->sck,
+		.mosi_io_num = disp_cfg->sdi,
+		.miso_io_num = -1,
+		.quadwp_io_num = -1,
+		.quadhd_io_num = -1,
+		.max_transfer_sz = SOC_SPI_MAXIMUM_BUFFER_SIZE
+	};
+	ESP_ERROR_CHECK(spi_bus_initialize(SPI2_HOST, &buscfg, SPI_DMA_CH_AUTO));
+
+	// create new LCD panel IO handle derived from SPI
+	const esp_lcd_panel_io_spi_config_t io_config = {
+		.dc_gpio_num = disp_cfg->dc,
+		.cs_gpio_num = disp_cfg->cs,
+		.pclk_hz = 1000000,
+		.lcd_cmd_bits = 8,
+		.lcd_param_bits = 8,
+		.spi_mode = 0,
+		.trans_queue_depth = 10,
+		.on_color_trans_done = NULL
+	};
+	esp_lcd_panel_io_handle_t io_handle = NULL;
+	ESP_ERROR_CHECK(esp_lcd_new_panel_io_spi((esp_lcd_spi_bus_handle_t) SPI2_HOST, &io_config, &io_handle));
+
+	// create LCD panel handle
+	esp_lcd_gdey0154d67_vendor_config_t esp_lcd_gdey0154d67_cfg = {
+		.busy_pin = disp_cfg->busy,
+        .retain_ram = disp_cfg->retain_ram,
+	};
+	const esp_lcd_panel_dev_config_t panel_config = {
+		.reset_gpio_num = disp_cfg->res,
+		.flags.reset_active_high = false,
+		.vendor_config = &esp_lcd_gdey0154d67_cfg,
+	};
+	esp_lcd_panel_handle_t panel_handle = NULL;
+	ESP_ERROR_CHECK(esp_lcd_new_panel_gdey0154d67(io_handle, &panel_config, &panel_handle));
+	
+	s_busy_pin = disp_cfg->busy;
+	ESP_ERROR_CHECK(esp_pm_lock_create(ESP_PM_NO_LIGHT_SLEEP, 0, "eink", &s_disp_lock));
+
+	return panel_handle;
+}
+
+static void wait_display_idle(void) {
+    // SSD1681-Familie: BUSY high = beschäftigt. Polarität im Treiber prüfen!
+    TickType_t t0 = xTaskGetTickCount();
+    while (!gpio_get_level(s_busy_pin) &&
+           (xTaskGetTickCount() - t0) < pdMS_TO_TICKS(5000)) {
+        vTaskDelay(pdMS_TO_TICKS(10));
+    }
+}
+
+void update_display(esp_lcd_panel_handle_t eink) {
+	esp_pm_lock_acquire(s_disp_lock);
+    if (partial_updates >= FULL_UPDATE_INTERVAL) {
+        ESP_ERROR_CHECK(esp_lcd_gdey0154d67_set_update_mode(eink, esp_lcd_gdey0154d67_full_update));
+        partial_updates = 0;
+    } else {
+        ESP_ERROR_CHECK(esp_lcd_gdey0154d67_set_update_mode(eink, esp_lcd_gdey0154d67_partial_update));
+        partial_updates++;
+    }
+
+    ESP_ERROR_CHECK(esp_lcd_panel_draw_bitmap(eink, 0, 0, DISPLAY_W, DISPLAY_H, framebuffer));
+    
+    wait_display_idle();
+    esp_pm_lock_release(s_disp_lock);
+}
+
+/* shortens s in place with "..." if it's to long to be displayed in one line
+ * on the eInk display with freemono_small
+ *
+ */
+static void fit_small(char *s, int max_w) {
+	if (text_width(&freemono_small, s) <= max_w) {
+		return;
+	}
+	
+	size_t len = strlen(s);
+	
+	while (len > 0) {
+		do {
+			len--;
+		} while (len > 0 && ((unsigned char)s[len] & 0xC0) == 0x80);
+		
+		s[len] = '\0';
+		strcpy(s + len, "...");
+		
+		if (text_width(&freemono_small, s) <= max_w) {
+			return;
+		}
+		
+		s[len] = '\0';
+	}
+}
+
+static void draw_centered_small(int y, const char *text) {
+	draw_text(&freemono_small, 
+	          (DISPLAY_W - text_width(&freemono_small, text)) / 2, y, text);
+}
+
+void render_screen(const struct tm *now) {
+	// Date and time
+    char time_text[8];
+    char date_text[32];
+
+    snprintf(time_text, sizeof(time_text), "%02d:%02d",
+             now->tm_hour, now->tm_min);
+    snprintf(date_text, sizeof(date_text), "%s, %d. %s",
+             weekday_names[now->tm_wday], now->tm_mday,
+             month_names[now->tm_mon]);
+
+    framebuffer_clear();
+
+    int time_x = (DISPLAY_W - text_width(&freemono_large, time_text)) / 2;
+    int date_x = (DISPLAY_W - text_width(&freemono_small, date_text)) / 2;
+
+    draw_text(&freemono_large, time_x, TIME_Y, time_text);
+    draw_text(&freemono_small, date_x, DATE_Y, date_text);
+    
+    // notifications
+    uint16_t unread = ans_get_unread_total();
+    if (unread > 0) {
+    	char note_text[24];
+    	snprintf(note_text, sizeof(note_text), "%u unread", (unsigned)unread);
+    	draw_centered_small(NOTE_LINE_Y, note_text);
+    }
+    
+    // currently playing song
+    mcs_snapshot_t media;
+    mcs_get(&media);
+    if (media.state == MCS_STATE_PLAYING && media.title[0] != '\0') {
+    	char song_text[MCS_STR_MAX + 4];
+    	strlcpy(song_text, media.title, sizeof(song_text));
+    	fit_small(song_text, DISPLAY_W - 2 * TEXT_MARGIN);
+    	draw_centered_small(SONG_LINE_Y, song_text);
+    }
+}
+
+void render_pairing_screen(void) {
+	framebuffer_clear();
+	const int y0 = (DISPLAY_H - RACCOON_H) / 2;
+	memcpy(&framebuffer[y0 * (DISPLAY_W / 8)], raccoon_bitmap, sizeof(raccoon_bitmap));
+}

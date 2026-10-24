@@ -1,0 +1,21 @@
+dependencies:
+  idf:
+    source:
+      type: idf
+    version: 6.1.0
+  kk-kk-k/gdey0154d67:
+    component_hash: 2d58fcb5bebd9599365c581e0ced0e897fba247d2d166d42c32236b4e087a862
+    dependencies:
+    - name: idf
+      require: private
+      version: '>=5.0'
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 1.1.0
+direct_dependencies:
+- idf
+- kk-kk-k/gdey0154d67
+manifest_hash: 786f8a97b901eb8ef7ec6ca89880c40b540a77e886972d96c7e412bf3b0b4aac
+target: esp32s3
+version: 3.0.0

@@ -1,2 +1,5 @@
 .history/
 *.lck
+*~
+firmware/*~
+firmware/main/*~
